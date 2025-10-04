@@ -1,0 +1,104 @@
+\documentclass[12pt, a4paper, leqno]{article}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{tikz}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{1em}
+
+
+\title{Bølgelikningen oppgave basis}
+\author{Henrik Andreas Tømt\thanks{Kadett, CISK}}
+\date{september 2025}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+\section{Hva er bølgelikningen?}
+
+\subsection{Oppgavetekst oppgave 1}
+
+Bølgelikningen beskriver vibrasjonen av transversale bølger langs en elastist streng.
+Strengen har lengde \textit{l}. Se for deg at strengen er i ``ubalanse'' og ved t = 0
+slippes og kan vibrere fritt. 
+
+Problemet handler om å bestemme vibrasjonene til strengen. Altså å finne defleksjonen $u(x, t)$ 
+på hvilket som helst punkt $x$ på hvilken som helst tid $t > 0$.
+
+For å løse likningen trenger vi noen forhåndsregler: 
+\begin{enumerate}
+  \item \textit{Massen av strengen per lengde er konstant (``Homogen'') streng. Strengen er pefekt
+    elastisk og har ingen resistanse i ``bøying''}
+  \item \textit{Spennet / spenningen foråsaket av strekking før fikserinen av endepunktene er såpass
+    stor at gravitasjonspvirkningen av strengen er neglisjerbar}
+  \item \textit{Strengen beveger seg i små transverse bevegelser langs et vertikalt plan, det er slik
+    at hver partikkel på strengen beveger seg kun vertikalt, slik at defleksjonen og helningen på strengen
+    langs hvert punkt av strengen forblir små i absolutt verdi}
+\end{enumerate}
+
+Disse assumpsjonene er slik at vi kan forvente at løsningen $u(x , t)$ av differensiallikningen av den fysiske 
+fysiske ``ikke-idealiserte'' strengen av små homogene masser under sterk spenning. 
+\subsection{Utledning}
+
+Å finne løsningen til differensiallikningen må vi vurdere kreftene som virker på en liten del av strengen. 
+Siden strengen ikke har noe resistanse mot bøyning, er spenningen tangentiell til avbøyningen til strengen 
+for ethvert punkt. La $T_1$ og $T_2$ være spenningene på endepunktene $P$ og $Q$ av den delen. Siden det ikke 
+er noe bevegelse horisontal retning, må de horisontale komponentene av spenningen være konstant.
+
+\begin{equation}
+  T_1 \cos\alpha = T_2 \cos\beta = T = const.
+  \label{eq:konst_T}
+\end{equation}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.75\textwidth]{../Figurer/vibrating_string.png}
+  \caption{Vibrerende streng} 
+\end{figure}
+
+I vertikal retning har vi to krefter, $-T_1 \sin\alpha$ og $T_2 \sin\beta$ av $T_1$ og $T_2$. Vi får 
+minustegnet fordi komponentene av $P$ peker nedover. Newtons andre lov sier at resultatet av disse 
+kreftene er lik massen $\rho\Delta x$ av porsjonen ganger akkselerasjonen $\partial ^2 u / \partial t^2$;
+her $\rho$ er massen av den uavbøyde strengen per enhet lengde, og $\Delta x$ er lengden av porsjonen
+av uavbøyd streng.
+
+$T_2 \sin\beta$ er den vertikale komponenten av $T_2$ som peker oppover ($+u$), og $T_1 \sin\alpha$ er den
+vertikale komponenten av $T_1$ som peker nedover ($-u$) En kan skrive $T_1 \sin\alpha$ som $T_{1 u} = T_1 \sin\alpha$
+og $T_2 \sin\beta$ som $T_{2 u} \sin\beta$ endrer vi masse per lengde, $\rho \Delta x$ med $m$ og akksellerasjon
+$\partial^2 u / \partial t^2$ med $a$ kan vi skrive om  slik:
+
+\begin{align*}
+  T_{2 u} - T_{1_u} &= ma \\
+  T_2 \sin\beta - T_1 \sin\alpha &= \rho \Delta x \frac{\partial ^2 u}{\partial t^2}
+\end{align*}
+
+\begin{equation}
+  \frac{T_2 \sin\beta}{T_2 \cos\beta} - \frac{T_1 \sin\alpha}{T_1 \cos\alpha} = 
+  \tan{\beta} - \tan{\alpha} = \frac{\rho \Delta x}{T} \frac{\partial^2 u}{\partial t^2}
+\label{eq:vertikal_komponent}
+\end{equation}
+
+$\tan \alpha$ og $\tan \beta$ er avblyningen på kurvene på $x$ og $x + \Delta x$.
+
+\begin{center}
+  $\tan \alpha =  {(\frac{\partial u}{\partial x})}_x$ og $\tan \beta = {(\frac{\partial u}{\partial x})}_{x + \Delta x}$.
+\end{center}
+
+Ved å bruke partielle deriverte, ettersom $u$ også avhenger av $t$. Deler en (\ref{eq:vertikal_komponent}) på $\Delta x$ får vi
+
+\begin{equation*}
+  \frac{1}{\Delta x} \left[ {\left( \frac{\partial u}{\partial x} \right)}_{x + \Delta x}
+  - { \left( \frac{\partial u}{\partial x} \right) }_x \right]
+  = \frac{\partial \rho}{T} \frac{\partial^2 u}{\partial t^2}
+\end{equation*}
+\section{Oppgave 2}
+
+tekst her 
+\end{document}
+

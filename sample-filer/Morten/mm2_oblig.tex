@@ -1,0 +1,409 @@
+% MM2 Oblig1
+% ===================================================================================
+\documentclass[12pt,a4paper]{article}
+
+% ----------------------- Pakker -----------------------------------------------
+\usepackage[T1]{fontenc}                                % Europeisk fontkoding (korrekte æ/ø/å i PDF)
+\usepackage[utf8]{inputenc}                             % Inndata-koding (utf8) for pdflatex
+
+% --- Matematikk (unngå redef-kollisjoner) ---
+\usepackage{amsmath}                                    % Bedre matemodus, align/multline/gather
+\usepackage{amssymb}                                    % Ekstra matematiske symboler
+\usepackage{amsthm}                                     % Teorem-, lemma- og bevis-miljøer
+\usepackage{mathtools}                                  % Utvidelser til amsmath (f.eks. \coloneqq)
+\usepackage{bm}                                         % Fete greske bokstaver (\bm)
+
+% --- Skrifter, mikrotypografi, bilder ---
+\usepackage{newtxtext}                                  % Times-lignende brødtekst
+\usepackage{microtype}                                  % Mikrosperring/kerning for penere avsnitt
+\usepackage{graphicx}                                   % Inkludere bilder (\includegraphics)
+
+% --- Struktur og lister ---
+\usepackage{titlesec}                                   % Tilpasse seksjonsoverskrifter
+\usepackage{enumitem}                                   % Kontroll på listeinnrykk/spacing
+
+% --- Lenker og referanser ---
+\usepackage[unicode]{hyperref}                                   % Klikkbare lenker/refs i PDF, metadata
+
+% --- Sideoppsett og enheter ---
+\usepackage[a4paper,margin=2.5cm]{geometry}             % Sidestørrelse og marger
+\usepackage{siunitx}                                    % SI-enheter og tallformatering (\SI, \num)
+\usepackage{setspace}                                  % Justere linjeavstand (\setstretch)
+
+% --- Innholdsfortegnelse og fysikknotasjon ---
+\usepackage{tocloft}                                    % Finjustere innholdsfortegnelsen
+\usepackage{physics}                                    % Vanlige fysikkmakroer (\dv, \qty, …)
+
+% --- Språk ---
+\usepackage[main=norsk,english]{babel}                  % Orddeling/språk (norsk hovedspråk)
+\addto\captionsnorsk{%
+  \renewcommand{\contentsname}{Innholdsfortegnelse}%
+}
+
+% --- Redegjør for matte i overskrifter ---
+\pdfstringdefDisableCommands{%
+  \def\frac#1#2{#1/#2}%
+  \def\left( {(} \def\right) {)}%
+}
+
+
+% ----------------------- Formatering ---------------------------------------
+% --- Avsnitt ---
+\setlength{\parindent}{0pt}                                                               % Ingen innrykk på første linje i avsnitt
+\setlength{\parskip}{0.6\baselineskip plus 2pt minus 1pt}                                 % Dynamisk luft mellom avsnitt (kan strekkes/krympes)
+
+% --- Linjeavstand (litt løsere) --- 
+\setstretch{1.10}                                                                         % Litt løsere linjeavstand (typisk 1.10–1.15)
+
+% --- Luft rundt display-matte (equation/align/...) ---
+\makeatletter                                                                             
+\g@addto@macro\normalsize{%                                                               % Justér standard-verdier for normalsize
+  \setlength\abovedisplayskip{-0.3\baselineskip plus 1pt minus 1pt}                        % Luft over display-likninger
+  \setlength\belowdisplayskip{1.3\baselineskip plus 1pt minus 1pt}                        % Luft under display-likninger
+  \setlength\abovedisplayshortskip{-0.3\baselineskip plus 1pt minus 1pt}                   % Når linja er “kort” før display
+  \setlength\belowdisplayshortskip{1.3\baselineskip plus 1pt minus 1pt}                   % Tilsvarende under
+}
+\makeatother                                                                             
+
+% --- Seksjonsavstand (med titlesec) ---
+\titlespacing*{\section}
+  {0pt}{2\baselineskip plus .4\baselineskip minus .2\baselineskip}{0.2\baselineskip}    % Venstreinnrykk, før- og etter-avstand
+\titlespacing*{\subsection}
+  {0pt}{1.1\baselineskip plus .3\baselineskip minus .2\baselineskip}{0\baselineskip}    % Litt strammere for subsection
+
+% --- Lister (med enumitem) ---
+\setlist{itemsep=0.4\baselineskip plus 2pt minus 1pt, topsep=0.5\baselineskip}   
+
+% --- Innholdsfortegnelse (med tocloft) ---
+\setlength{\cftbeforesecskip}{0.25\baselineskip}                                          % Luft før hver section-linje i ToC
+\setlength{\cftbeforesubsecskip}{-0.15\baselineskip}                                      % Luft før hver subsection-linje i ToC
+
+%------------------------Pakke-konflikt-----------------------------
+% siunitx vs physics: bruk siunitx sin \qty
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\ExplSyntaxOn
+\msg_redirect_name:nnn { siunitx } { physics-pkg } { none }
+\ExplSyntaxOff
+
+\emergencystretch=1em
+
+%------------------------------Metadata-kommandoer------------------------------
+\newcommand{\institution}{FHS/Cyberingeniørskolen}
+\newcommand{\coursecode}{ING2501 \; Matematiske Metoder 2}
+\newcommand{\studentname}{Morten K. Tverberg}
+\newcommand{\class}{VING 78}
+\newcommand{\submissiondate}{\today}
+\newcommand{\documenttitle}{Obligatorisk Oppgave}
+\newcommand{\documentsubtitle}{Taylorrekker}
+
+
+%----------------------- Stil / Pre-amble --------------------------------------
+\pagestyle{plain}                           
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=black,
+  citecolor=black,
+  pdfauthor={\studentname},
+  pdftitle={\documenttitle}
+}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection}{0.5em}{}
+
+
+%----------------------- Forside --------------------------------------
+\newcommand{\makedoctitle}{%
+  \thispagestyle{empty}
+  \begin{minipage}{0.15\textwidth}
+      \includegraphics[height=3cm]{cisk.png}
+  \end{minipage}%
+  \begin{minipage}{0.5\textwidth}
+      \vspace{10ex}
+      {\bfseries \institution}\\
+      {\itshape \coursecode}
+  \end{minipage}% 
+  \begin{minipage}{0.3\textwidth}
+      \vspace{13ex}
+      \raggedleft
+      \today 
+  \end{minipage}\\[0.5ex]
+  {\rule{\textwidth}{2pt}} \\ \vspace{3ex}
+
+  \begin{center}
+      {\Huge \bfseries \documenttitle} \\[1ex]
+      {\LARGE \bfseries \documentsubtitle} \\[2ex]
+      {\normalsize \studentname} \\[0.5ex]
+      {\normalsize \class} \\[1ex]
+  \end{center}
+
+\clearpage
+}
+
+%----------------------- Dokument -----------------------
+\begin{document}
+
+\makedoctitle
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\tableofcontents
+\clearpage
+
+% -------------------------------------------------- Oppgave 1 --------------------------------------------------
+\section{Taylorpolynom}
+\subsection{Bestem $P_{2,0}(x)$}
+Vi har funksjonen $S(x)=e^x$. 
+Ved hjelp av andre ordens taylorpolynom kan vi gjøre om $S(x)$ til et polynom rundt $x=0$. 
+Dette gir oss:
+
+\begin{equation*}
+  P_{2,0}(x) = S(0) + S'(0)x + \frac{S''(0)}{2}x^2
+\end{equation*} \vspace{1ex}
+
+
+Siden den deriverte av funksjonen $S(x)$ er lik funksjonen selv, får vi at:
+
+\begin{equation*}
+  P_{2,0}(x) = 1 + x + \frac{1}{2}x^2
+\end{equation*} \vspace{1ex}
+
+
+\subsection{Finn en tilnærmet verdi for $e^{0.2}$}
+For å finne en tilnærmet verdi for $S(0.2) = e^{0.2}$ kan vi bruke taylorpolynomet vi fant i $1.1$. 
+Vi setter inn $x=0.2$ i polynomet og får denne likningen:
+
+\begin{equation*}
+  P_{2,0}(0.2) = 1 + 0.2 + \frac{1}{2}(0.2)^2 \approx 1.22
+\end{equation*} \vspace{3ex}
+
+
+% -------------------------------------------------- Oppgave 2 --------------------------------------------------
+\section{Taylorpolynom fra differensialligning}
+\subsection{Bestem $P_{2,0}(x)$}
+Vi har funksjonen $y(x)\cdot(y'(x)+x+1)=6$ med startbetingelsen $y(0)=3$. 
+Vi ønsker å finne et andre ordens taylorpolynom rundt $x=0$. Dette gir oss:
+
+\begin{equation*}
+  P_{2,0}(x) = y(0) + y'(0)x + \frac{y''(0)}{2}x^2
+\end{equation*}
+
+\clearpage
+
+Her kan vi sette inn startbetingelsen i første ledd. 
+For å få andre ledd må vi stokke om på funksjonen slik at vi får:
+
+\begin{equation*}
+  y'(x) = \frac{6}{y(x)} - x - 1
+\end{equation*}
+
+
+Ved å sette inn $x=0$ i $y'(x)$ får vi:
+
+\begin{equation*}
+  y'(0) = \frac{6}{y(0)} - 0 - 1 = \frac{6}{3} - 1 = 1
+\end{equation*}
+
+
+Videre kan vi finne den tredje funksjonsverdien ved å derivere $y'(x)$:
+
+\begin{equation*}
+  y''(x) = -\frac{-y'(x) \cdot (y'(x)+x+1)}{(y(x))} - 1
+\end{equation*}
+
+
+Hvis vi setter inn $x=0$ i $y''(x)$ får vi:
+
+\begin{equation*}
+  y''(0) = -\frac{-y'(0) \cdot (y'(0)+0+1)}{(y(0))} - 1 
+  = -\frac{-1 \cdot (1+1)}{3} - 1 
+  = \frac{2}{3} - 1 
+  = -\frac{1}{3}
+\end{equation*}
+
+
+
+Dette kan videre settes inn i polynomet, for å få:
+
+\begin{equation*}
+  P_{2,0}(x) = 3 + x - \frac{1}{3}x^2
+\end{equation*}
+
+
+\subsection{Finn en tilnærmet verdi for $y(\frac{1}{10})$}
+For å finne en tilnærmet verdi av $y(\frac{1}{10})$ kan vi sette inn $x=\frac{1}{10}$ i polynomet vi fant i $2.1$. 
+Dette gir oss:
+
+\begin{equation*}
+  P_{2,0} \left( \frac{1}{10} \right) 
+  = 3 + \frac{1}{10} - \frac{1}{3} \cdot \left( \frac{1}{10} \right)^2 
+  = \frac{929}{300}
+\end{equation*}
+
+\clearpage
+
+
+% -------------------------------------------------- Oppgave 3 -------------------------------------------------- 
+\section{Maclaurinrekke bevis + integralregning}
+\subsection{Bevis for sammenheng mellom macalurinrekke og potensrekke}
+Vi skal i denne oppgaven bevise at:
+
+\begin{equation*}
+  \frac{x-\sin{x}}{x^3} \hspace{2ex} 
+  = \hspace{2ex} \sum_{n=0}^{\infty} \hspace{0.5ex} (-1)^n \hspace{0.5ex} \frac{x^{2n}}{(2n+3)!}
+\end{equation*}
+
+
+Vi begynner med å finne en tilsvarende maclaurinrekke for $\sin{x}$, 
+som gjøres ved å bruke definisjonen av maclaurinrekke:
+
+\begin{equation*}
+  \sin{x} = x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\frac{x^9}{9!} -
+  \hspace{1ex}\dots
+\end{equation*}
+
+
+Hvis vi legger til $x-$ og $\frac{1}{x^3}$ delen av stykket, får vi følgende:
+
+\begin{equation*}
+  \frac{x-\sin{x}}{x^3} = 
+  \frac{x - x-\frac{x^3}{3!}+\frac{x^5}{5!}-\frac{x^7}{7!}+\frac{x^9}{9!}-\hspace{0.5ex}\dots}{x^3}
+   = -\frac{1}{3!}+\frac{x^2}{5!}-\frac{x^4}{7!}+\frac{x^6}{9!}-\hspace{1ex}\dots
+\end{equation*}
+
+
+Her ser vi et tydelig mønster, 
+hvor vi har en $x$ som øker partallsvis med vekslende fortegn, og en fakultet som øker oddetallsvis. 
+Dette kan vi skrive som følgende sum:
+
+\begin{equation*}
+  \frac{x-\sin{x}}{x^3} = \sum_{n=0}^{\infty} (-1)^n \frac{x^{2n}}{(2n+3)!}
+\end{equation*}
+\qed
+
+\subsection{Utregning av integral}
+Neste oppgave går ut på å regne integralet:
+
+\begin{equation*}
+  \int_0^1 \frac{x-\sin{x}}{x^3} \dd{x}
+\end{equation*}
+
+
+For å gjøre integralet lettere å regne ut, 
+kan vi ved å bruke potensrekken vi fant i $3.1$, 
+skrive om integralet til:
+
+\begin{equation*}
+  \sum_{n=0}^{\infty} (-1)^n \frac{1}{(2n+3)!} 
+  \hspace{1ex} \int_0^1 x^{2n} \dd{x}
+\end{equation*}
+
+
+Selve integralet kan vi regne ut som:
+
+\begin{equation*}
+  \int_0^1 x^{2n} \dd{x} = \left[ \frac{x^{2n+1}}{2n+1} \right]_0^1 = \frac{1}{2n+1}
+\end{equation*}
+
+
+Dette kan vi sette inn i summen, som da blir:
+
+\begin{equation*}
+  \sum_{n=0}^{\infty} (-1)^n \frac{1}{(2n+3)!} \cdot \frac{1}{2n+1}
+  = \sum_{n=0}^{\infty} (-1)^n \frac{1}{(2n+1)(2n+3)!}
+\end{equation*}
+
+
+For å avgjøre om summen konvergerer, kan vi regne de første tre leddene individuellt.
+
+\begin{equation*}
+  \begin{split}
+  & n=0: \hspace{4.2ex} \frac{1}{3!} \hspace{2ex} \approx \hspace{1ex} 0.16667 \\[1ex]
+  & n=1: \hspace{1ex} -\frac{1}{5 \cdot 5!} \hspace{1ex} \approx \hspace{1ex} -0.00167 \\[1ex]
+  & n=2: \hspace{2.8ex} \frac{1}{7 \cdot 7!} \hspace{1ex} \approx \hspace{1ex} 0.0000283
+  \end{split}
+\end{equation*}
+
+
+Vi ser her at for økende $n$-verdi vil likningene i summen gå mot 0. 
+Dette betyr at for å finne en tilnærmet verdi av summen fra $0 \rightarrow \infty$, 
+kan vi bruke de fem første leddene eksempelvis:
+
+\begin{equation*}
+  \sum_{n=0}^{4} (-1)^n \frac{1}{(2n+1)(2n+3)!} 
+  =  \frac{1}{3!} - \frac{1}{5 \cdot 5!} + \frac{1}{7 \cdot 7!} - \frac{1}{9 \cdot 9!} + \frac{1}{11 \cdot 11!}
+  \approx 0.1639
+\end{equation*}
+
+
+% -------------------------------------------------- Oppgave 4 --------------------------------------------------
+\section{Potensrekke}
+\subsection{Konvergens av potensrekken}
+I denne oppgaven skal vi finne konvergens av rekken:
+
+\begin{equation*}
+  a_n = \sum_{n=0}^{\infty} \hspace{0.5ex} (-1)^n \hspace{0.5ex} \frac{x^{n+1}}{n!}
+\end{equation*}
+
+
+For å finne konvergensen kan vi bruke formelen:
+
+\begin{equation*}
+  \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right|
+\end{equation*}
+
+
+hvor
+
+\begin{equation*}
+  a_{n+1} = \sum_{n=0}^{\infty} \hspace{0.5ex} (-1)^{n+1} 
+  \hspace{0.5ex} \frac{x^{n+2}}{(n+1)!}
+\end{equation*}
+
+
+Hvis vi legger formelene inn i konvergensformelen, får vi:
+
+\begin{equation*}
+  \lim_{n \to \infty} \left| \frac{(-1)^{n+1} \cdot \frac{x^{n+2}}{(n+1)!}}{(-1)^n \cdot \frac{x^{n+1}}{n!}} \right|
+  = \lim_{n \to \infty} \left| -\frac{x^{n+2} \cdot n!}{(n+1)! \cdot x^{n+1}} \right|
+  = \lim_{n \to \infty} \left| -\frac{x}{n+1} \right|
+  = 0
+\end{equation*}
+
+
+Dette betyr at rekken konvergerer for alle $x \in \mathbb{R}$.
+
+
+\subsection{Finne summen av potensrekken}
+For å finne summen av rekken kan vi se på $e^x$ sin maclaurinrekke:
+
+\begin{equation*}
+  e^x = \sum_{n=0}^{\infty} \hspace{0.5ex} \frac{x^n}{n!} = 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \hspace{1ex}\dots
+\end{equation*}
+
+
+Hvis vi ganger begge sider med $x$, får vi:
+
+\begin{equation*}
+  \begin{split}
+    xe^x = \sum_{n=0}^{\infty} \hspace{0.5ex} \frac{x^{n+1}}{n!} \\
+    {\scriptstyle (x^{n+1} = \hspace{0.5ex} x^n x)}
+  \end{split}
+\end{equation*}
+
+
+Stykket begynner allerede å ligne på vårt stykke, 
+for å få vekslende fortegn kan vi gange med $-1$:
+
+\begin{equation*}
+  \begin{split}
+  -xe^x = \sum_{n=0}^{\infty} \hspace{0.5ex} (-1)^n \hspace{0.5ex} \frac{x^{n+1}}{n!} \\
+  {\scriptstyle ((-x)^n = \hspace{0.5ex} (-1)^n x^n)}
+  \end{split}
+\end{equation*}
+
+Dette betyr at potensrekken vi har er lik $-xe^x$.
+
+\end{document}

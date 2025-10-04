@@ -1,0 +1,108 @@
+\subsection{Bakgrunn og målsetting}
+Bølgeligningen er en av de mest fundamentale partielle differensialligningene i fysikk og matematikk. 
+Den beskriver hvordan bølger forplanter seg i tid og rom, og opptrer i mange sammenhenger - fra 
+vibrasjoner i en streng eller en membran, til akustiske bølger i luft, seismiske bølger i jordskorpen 
+og elektromagnetiske bølger i vakuum. 
+
+I dette prosjektet tar vi utgangspunkt i den klassiske éndimensjonale bølgeligningen:
+
+\begin{equation*}
+    \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}
+    \label{eq:bølgeligningen}
+\end{equation*}
+
+der $u(x,t)$ beskriver utslaget til systemet, og $c$ er bølgefarten bestemt av materialparametere. 
+Vi viser hvordan ligningen kan utledes fra enkle fysiske prinsipper, og hvordan ulike rand- og 
+initialbetingelser gir opphav til stående bølger og egenfrekvenser. 
+
+Videre undersøker vi hvordan løsningen oppfører seg under forskjellige forhold, blant annet hvordan 
+resonans oppstår når en streng utsettes for en periodisk ytre kraft, og hvordan energien i systemet 
+utvikler seg med eller uten demping. Resultatene vil bli både analytisk utledet og numerisk simulert, 
+og vi vil sammenligne teori med numeriske observasjoner. 
+
+Formålet med rapporten er dermed å belyse bølgeligningens matematiske struktur, demonstrere sentrale 
+fysiske fenomener knyttet til bølger, og trekke paralleller til praktiske anvendelser. Rapporten er 
+bygd opp slik at vi først presenterer den teoretiske bakgrunnen og utledningen, deretter beskriver vi 
+numeriske metoder og simuleringer, før vi avslutter med resultater, diskusjon og konklusjon.
+
+\subsection{Problemstilling og valg av tema}
+
+I denne oppgaven har vi valgt å fokusere på gitarstrengen som et konkret eksempel på
+bølgeligningen i praksis. Problemstillingen vi ønsker å undersøke er:
+
+\begin{center}
+    \textit{Hvordan kan strengens materiale, tykkelse og spennkraft modelleres i bølgeligningen, 
+    og hvilken betydning har disse faktorene for bølgefarten og dermed tonehøyden på en gitar?}
+\end{center}
+
+Vi valgte denne problemstillingen fordi den kombinerer en fundamental matematisk modell 
+med et fysisk og praktisk fenomen som de fleste kan relatere til. En gitarstreng er et lettfattelig
+eksempel på hvordan bølger oppfører seg, og hvordan små endringer i fysiske parametere kan gi 
+merkbare utslag i lyd og tonehøyde. Dermed får vi muligheten til både å fordype oss i 
+den matematiske utledningen og samtidig knytte teorien til en konkret anvendelse i musikk.
+
+Problemstillingen er interessant fordi den viser hvordan en enkel partielle differensialligning 
+kan forklare komplekse og observerbare fenomener. Samtidig åpner den for en kombinasjon 
+av analytiske utledninger og numeriske simuleringer, noe som gir oss mulighet til å sammenligne 
+teori og praksis på en strukturert måte.
+
+\subsubsection*{Hvordan vi skal gå frem}
+
+Vi starter med den klassiske bølgeligningen, som beskriver utslaget $u(x,t)$ til en streng i rotnormal retning:
+
+\begin{equation*}
+  \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2},
+  \label{eq:bolgeligningen}
+\end{equation*}
+
+og viser hvordan denne kan utledes fra Newtons 2.~lov anvendt på et lite strengsegment.
+Videre kobler vi bølgefarten $c$ til strengens fysiske parametere gjennom
+
+\begin{equation*}
+  c = \sqrt{\frac{T}{\mu}}, \qquad \mu = \rho A,
+\end{equation*}
+
+der $T$ er spennkraften i strengen, $\rho$ er materialets tetthet og $A$ er strengens tverrsnittsareal.
+Som en løsning på bølgeligningen kan vi anta en harmonisk bølge av formen
+
+\begin{equation*}
+  u(x,t) = A \sin(kx - \omega t),
+\end{equation*}
+
+der $A$ er amplituden, $k=\tfrac{2\pi}{\lambda}$ er bølgetallet og $\omega = 2\pi f$ er vinkelfrekvensen.  
+Sammenhengen mellom $\omega$, $k$ og $c$ følger fra dispersjonsrelasjonen
+
+\begin{equation*}
+  \omega = c k.
+\end{equation*}
+
+For en streng med lengde $L$ og faste ender ($u(0,t)=u(L,t)=0$) finner vi at egenfrekvensene blir
+
+\begin{equation*}
+  f_n = \frac{n}{2L}\,c, \qquad n=1,2,3,\dots
+\end{equation*}
+
+Dermed kan vi analysere hvordan variasjon i $T$, $\rho$ og $A$ påvirker både grunnfrekvensen og de høyere overtonene.
+En vilkårlig strengutslag $u(x,0)$ kan videre uttrykkes som en sum av harmoniske svingninger ved hjelp av Fourier-rekker.
+Den generelle løsningen for $u(x,t)$ kan uttrykkes med moduser 
+$\sin\!\left(\tfrac{n\pi x}{L}\right)$, der tidsdynamikken for hver modus har formen 
+
+\begin{equation*}
+    u(x,t) = \sum_{n=1}^{\infty} \bigl[a_n \cos(\omega_n t) + b_n \sin(\omega_n t)\bigr] 
+    \sin\!\left(\tfrac{n\pi x}{L}\right).
+\end{equation*}
+
+der koeffisientene $a_n$ og $b_n$ bestemmes av de gitte initialbetingelsene.
+For en detaljert fremstilling og utledning av denne metoden, se LibreTexts: 
+\textit{Solving the Wave Equation with Fourier Transforms} \parencite{libretextsWave}
+
+
+
+Til slutt vil vi sammenligne de utledede teoretiske uttrykkene med numeriske simuleringer 
+av bølgeligningen for representative parametere, for å bekrefte modellens gyldighet og illustrere praktiske effekter.
+
+\subsection{Hvordan kunstig intelligens er brukt i arbeidet med rapporten}
+I arbeidet med denne oppgaven har vi brukt kunstig intelligens som et supplement, hovedsakelig for å hjelpe med formatering, strukturering og oppsett i LaTeX. 
+Selve de matematiske utledningene og formlene har vi gjort på egen hånd, ofte først på papir, før vi har satt dem inn i rapporten. 
+Kunstig intelligens har derfor fungert som en støttespiller for å gjøre teksten mer oversiktlig og effektiv å presentere, men den faglige forståelsen, beregningene og drøftingene har vi selv stått for. 
+På denne måten har vi sikret at oppgaven gjenspeiler vår egen innsats og kunnskap, samtidig som vi har brukt verktøyet til å styrke klarheten og kvaliteten på framstillingen.

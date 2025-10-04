@@ -1,0 +1,212 @@
+% Labrapport kretsteknikk mal
+% ===================================================================================
+\documentclass[12pt,a4paper]{article}
+
+% ----------------------- Pakker -----------------------------------------------
+\usepackage[T1]{fontenc}                                % Europeisk fontkoding (korrekte æ/ø/å i PDF)
+\usepackage[utf8]{inputenc}                             % Inndata-koding (utf8) for pdflatex
+
+% --- Matematikk først (unngå redef-kollisjoner) ---
+\usepackage{amsmath}                                    % Bedre matemodus, align/multline/gather
+\usepackage{amssymb}                                    % Ekstra matematiske symboler
+\usepackage{amsthm}                                     % Teorem-, lemma- og bevis-miljøer
+\usepackage{mathtools}                                  % Utvidelser til amsmath (f.eks. \coloneqq)
+\usepackage{bm}                                         % Fete greske bokstaver (\bm)
+
+% --- Skrifter, mikrotypografi, bilder ---
+\usepackage{newtxtext}                                  % Times-lignende brødtekst
+\usepackage{newtxmath}                                  % Matchende matematikksnitt
+\usepackage{microtype}                                  % Mikrosperring/kerning for penere avsnitt
+\usepackage{graphicx}                                   % Inkludere bilder (\includegraphics)
+
+% --- Struktur og lister ---
+\usepackage{titlesec}                                   % Tilpasse seksjonsoverskrifter
+\usepackage{enumitem}                                   % Kontroll på listeinnrykk/spacing
+
+% --- Lenker og referanser ---
+\usepackage{hyperref}                                   % Klikkbare lenker/refs i PDF, metadata
+
+% --- Litteratur ---
+\usepackage[backend=biber,style=ieee]{biblatex}         % Kildehåndtering m/IEEE-stil
+\usepackage{csquotes}                                   % Korrekte sitater (anbefalt for biblatex)
+
+% --- Sideoppsett og enheter ---
+\usepackage[a4paper,margin=2.5cm]{geometry}             % Sidestørrelse og marger
+\usepackage{siunitx}                                    % SI-enheter og tallformatering (\SI, \num)
+
+% --- Innholdsfortegnelse og fysikknotasjon ---
+\usepackage{tocloft}                                    % Finjustere innholdsfortegnelsen
+\usepackage{physics}                                    % Vanlige fysikkmakroer (\dv, \qty, …)
+
+% --- Språk ---
+\usepackage[main=norsk,english]{babel}                  % Orddeling/språk (norsk hovedspråk)
+\addto\captionsnorsk{%
+  \renewcommand{\contentsname}{Innholdsfortegnelse}%
+}
+
+
+
+%------------------------Pre-amble-----------------------------
+% siunitx vs physics: bruk siunitx sin \qty
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\ExplSyntaxOn
+\msg_redirect_name:nnn { siunitx } { physics-pkg } { none }
+\ExplSyntaxOff
+
+\emergencystretch=1em
+
+%------------------- Ressurser ------------------------------------------------
+\addbibresource{referanser.bib}
+
+%------------------------------Metadata-kommandoer------------------------------
+\newcommand{\institution}{FHS/Cyberingeniørskolen}
+\newcommand{\laboratory}{Elektronikklaboratoriet}
+\newcommand{\coursecode}{ING2508 \; KRETSTEKNIKK}
+\newcommand{\assignmentno}{H0X}
+\newcommand{\assignmenttype}{LABORATORIEXXXX}
+\newcommand{\assignmenttitle}{XXXXXXXXXXX}
+\newcommand{\studentname}{Morten K. Tverberg}
+\newcommand{\partnername}{Henrik A. Tømt}
+\newcommand{\class}{VING 78}
+\newcommand{\labdate}{dd.mm.yyyy}
+\newcommand{\submissiondate}{\today}
+
+%----------------------- Stil / Pre-amble --------------------------------------
+\pagestyle{plain}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\setlist{nosep}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=black,
+  citecolor=black,
+  pdfauthor={\studentname},
+  pdftitle={\assignmenttitle}
+}
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection}{0.5em}{}
+
+\setlength{\cftbeforesecskip}{0pt}    % Mellomrom før sections
+\setlength{\cftbeforesubsecskip}{0pt} % Mellomrom før subsections
+
+%----------------------- Hovedside --------------------------------------
+\newcommand{\makelabtitle}{%
+    \thispagestyle{empty}
+    \begin{minipage}{0.15\textwidth}
+        \includegraphics[height=3cm]{cisk.png}
+    \end{minipage}%
+    \begin{minipage}{0.4\textwidth}
+        \vspace{10ex}
+        \raggedright
+        {\bfseries \institution}\\
+        {\itshape \laboratory}
+    \end{minipage}% 
+    \begin{minipage}{0.4\textwidth}
+        \vspace{13ex}
+        \raggedleft
+        \today 
+    \end{minipage}
+    \vspace{1ex}
+
+{\noindent\rule{\textwidth}{2pt}} \\ \vspace{3ex}
+\begin{center}
+    {\Huge \textbf \assignmenttype}\\[2ex]
+    {\Large \textbf {OPPGAVE} \assignmentno}\\[6ex]
+    {\LARGE \assignmenttitle}\\[10ex]
+    {\large \coursecode}\\[3ex]
+
+{\noindent\rule{\textwidth}{2pt}} \\\vspace{5ex}
+
+    \textbf{AV}\\[1ex]
+    {\large \studentname}\\ [5ex]
+\end{center}
+
+{\noindent\rule{\textwidth}{2pt}} \\\vspace{5ex}
+
+\begin{flushleft}
+    \begin{tabular}{@{}ll}
+    \textbf{KLASSE:} & \class \\
+    \vspace{2ex} \\
+    \textbf{LABORATORIEGRUPPE:} & \studentname \\
+    \textbf{} & \partnername \\
+    \vspace{2ex} \\
+    \textbf{Forsøk utført:} & \labdate \\
+    \textbf{Rapport levert:} & \submissiondate \\
+    \end{tabular}
+\end{flushleft}
+\clearpage
+}
+
+%----------------------- Dokument -----------------------
+\begin{document}
+
+\makelabtitle
+
+\pagenumbering{Roman}
+\setcounter{page}{1}
+
+\section*{Sammendrag}
+\dots
+
+\clearpage
+
+\tableofcontents
+\clearpage
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\section{Innledning}
+\dots
+
+\section{Instrument- og komponentliste}
+\subsection{Instrumentliste}
+\begin{table}[h]
+    \centering
+    \caption{Instrumentliste}
+    \label{tab:Tabell1}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Venstre & Midt & Høyre \\ \hline
+        Tekst   & 123  & ABC   \\ \hline
+    \end{tabular}
+\end{table}
+
+\subsection{Komponentliste}
+\begin{table}[h]
+    \centering
+    \caption{Komponentliste}
+    \label{tab:Tabell2}
+    \begin{tabular}{|c|c|c|}
+        \hline
+        Venstre & Midt & Høyre \\ \hline
+        Tekst   & 123  & ABC   \\ \hline
+    \end{tabular}
+\end{table}
+
+\section{Teori}
+IEEE \parencite{ieeeGuide} gir en god oversikt over grunnleggende kretsteori. 
+I denne rapporten vil vi fokusere på de mest relevante teoriene for oppgaven.
+
+\section{Gjennomføring med måleresultater}
+\dots
+
+\section{Diskusjon}
+\dots
+
+\section{Konklusjon}
+\dots
+
+\appendix
+\section*{Vedlegg}
+\addcontentsline{toc}{section}{Vedlegg}
+\dots
+
+\printbibliography
+
+\end{document}

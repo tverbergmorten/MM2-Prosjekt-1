@@ -1,0 +1,67 @@
+% ---------------- Dempe unødvendige advarsler  ---------------------------------------
+\WarningFilter{latex}{Command \showhyphens has changed}
+
+% ----------------------- Formatering ---------------------------------------
+% --- Avsnitt ---
+\setlength{\parindent}{0pt}                                                               % Ingen innrykk på første linje i avsnitt
+\setlength{\parskip}{0.6\baselineskip plus 2pt minus 1pt}                                 % Dynamisk luft mellom avsnitt (kan strekkes/krympes)
+
+% --- Linjeavstand (litt løsere) --- 
+\setstretch{1.10}                                                                         % Litt løsere linjeavstand (typisk 1.10–1.15)
+
+% --- Luft rundt display-matte (equation/align/...) ---
+\makeatletter                                                                             
+\g@addto@macro\normalsize{%                                                               % Justér standard-verdier for normalsize
+  \setlength\abovedisplayskip{-0.3\baselineskip plus 1pt minus 1pt}                        % Luft over display-likninger
+  \setlength\belowdisplayskip{1.3\baselineskip plus 1pt minus 1pt}                        % Luft under display-likninger
+  \setlength\abovedisplayshortskip{-0.3\baselineskip plus 1pt minus 1pt}                   % Når linja er “kort” før display
+  \setlength\belowdisplayshortskip{1.3\baselineskip plus 1pt minus 1pt}                   % Tilsvarende under
+}
+\makeatother                                                                             
+
+% --- Seksjonsavstand (med titlesec) ---
+\titlespacing*{\section}
+  {0pt}{2\baselineskip plus .4\baselineskip minus .2\baselineskip}{0.2\baselineskip}    % Venstreinnrykk, før- og etter-avstand
+\titlespacing*{\subsection}
+  {0pt}{1.1\baselineskip plus .3\baselineskip minus .2\baselineskip}{0\baselineskip}    % Litt strammere for subsection
+
+% --- Lister (med enumitem) ---
+\setlist{itemsep=0.4\baselineskip plus 2pt minus 1pt, topsep=0.5\baselineskip}   
+
+% --- Innholdsfortegnelse (med tocloft) ---
+\setlength{\cftbeforesecskip}{0.25\baselineskip}                                          % Luft før hver section-linje i ToC
+\setlength{\cftbeforesubsecskip}{-0.15\baselineskip}                                      % Luft før hver subsection-linje i ToC
+
+%------------------------Pakke-konflikt-----------------------------
+% siunitx vs physics: bruk siunitx sin \qty
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+\ExplSyntaxOn
+\msg_redirect_name:nnn { siunitx } { physics-pkg } { none }
+\ExplSyntaxOff
+
+\emergencystretch=1em
+
+\pgfplotsset{compat=1.18}
+
+                   
+% -------------- Stil ------------------------------------------------
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  urlcolor=black,
+  citecolor=black,
+  pdfauthor={\authornames},
+  pdftitle={\documenttitle}
+}
+
+\addto\captionsnorsk{%
+  \renewcommand{\contentsname}{Innholdsfortegnelse}%      Endrer "Innhold" til "Innholdsfortegnelse"
+}
+
+% \DefineBibliographyStrings{norsk}{
+%   references = {Kildehenvisninger},                     Kan legges inn hvis ønskelig for å gjøre "Referanser" om til "Kildehenvisninger"
+% }
+
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection}{0.5em}{}

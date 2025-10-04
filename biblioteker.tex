@@ -1,0 +1,47 @@
+% --- Fjerne unødvendige warnings ---
+\usepackage{silence}
+
+% --- Font- og inndatakoding ---
+\usepackage[T1]{fontenc}                                % Europeisk fontkoding (korrekte æ/ø/å i PDF)
+\usepackage[utf8]{inputenc}                             % Inndata-koding (utf8) for pdflatex
+
+
+% --- Matematikk (unngå redef-kollisjoner) ---
+\usepackage{amsmath}                                    % Bedre matemodus, align/multline/gather
+\usepackage{amssymb}                                    % Ekstra matematiske symboler
+\usepackage{amsthm}                                     % Teorem-, lemma- og bevis-miljøer
+\usepackage{mathtools}                                  % Utvidelser til amsmath (f.eks. \coloneqq)
+\usepackage{bm}                                         % Fete greske bokstaver (\bm)
+
+% --- Skrifter, mikrotypografi, bilder ---
+\usepackage{newtxtext}                                  % Times-lignende brødtekst
+\usepackage[nopatch=footnote]{microtype}                % Mikrosperring/kerning for penere avsnitt
+\usepackage{graphicx}                                   % Inkludere bilder (\includegraphics)
+
+% --- Struktur og lister ---
+\usepackage{titlesec}                                   % Tilpasse seksjonsoverskrifter
+\usepackage{enumitem}                                   % Kontroll på listeinnrykk/spacing
+
+% --- Lenker og referanser ---
+\usepackage[unicode]{hyperref}                          % Klikkbare lenker/refs i PDF, metadata
+
+% --- Sideoppsett og enheter ---
+\usepackage[a4paper,margin=2.5cm]{geometry}             % Sidestørrelse og marger
+\usepackage{siunitx}                                    % SI-enheter og tallformatering (\SI, \num)
+\usepackage{setspace}                                   % Justere linjeavstand (\setstretch)
+
+% --- Innholdsfortegnelse og fysikknotasjon ---
+\usepackage{tocloft}                                    % Finjustere innholdsfortegnelsen
+\usepackage{physics}                                    % Vanlige fysikkmakroer (\dv, \qty, …)
+
+% --- Litteratur ---
+\usepackage[backend=biber,style=ieee]{biblatex}         % Kildehåndtering m/IEEE-stil
+\usepackage{csquotes}                                   % Korrekte sitater (anbefalt for biblatex)% --- Litteratur ---
+
+
+% --- Språk ---
+\usepackage[main=norsk,english]{babel}              % Orddeling/språk (norsk hovedspråk)
+
+% --- Grafer ---
+\usepackage{tikz}                                       % Tegne grafer / piler osv.
+\usepackage{pgfplots}                                   % Plotte grafer 

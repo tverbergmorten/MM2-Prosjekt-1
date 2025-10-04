@@ -1,0 +1,65 @@
+\documentclass[12pt]{article}
+
+% ---- Includerer eksterne filer ------------------------------
+\input{metadata.tex}
+\input{biblioteker.tex}
+\addbibresource{referanser.bib}
+\input{includes/forside.tex}
+\input{preamble.tex}
+
+
+% --------------- Dokument -----------------------------
+\begin{document}
+
+\makedoctitle
+
+\pagenumbering{Roman}
+\setcounter{page}{1}
+
+\tableofcontents
+
+\clearpage
+\addcontentsline{toc}{section}{Sammendrag}
+\section*{Sammendrag}
+\input{includes/sammendrag.tex}
+
+\clearpage
+
+\pagenumbering{arabic}          % Bytter til vanlige tall fra romertall
+\setcounter{page}{1}
+
+% ! FJERN FØR INNLEVERING ! ------------------------------
+\section*{\color{red}Greit å vite (Fjernes før innlevering)}
+1. Kildereferanser gjøres slik: \texttt{\string\parencite\{StringVibration2025\}}, 
+se fil referanser.bib for kilder.
+
+2. Hvis du skal legge inn inline-matte i overskrifter/underoverskrifter,
+må du bruke \\ \texttt{\string\texorpdfstring\{\$\string\mu\$\}\{mu\}} for eksempelvis $\mu$.
+
+3. 
+
+% ! FJERN FØR INNLEVERING ! ------------------------------
+
+\section{Innledning}
+\input{includes/innledning.tex}
+
+\section{Teori}
+\input{includes/teori.tex}
+
+\section{Metode}
+%\input{includes/metode.tex}
+
+\section{Resultater}
+\input{includes/resultater.tex}
+
+\section{Diskusjon}
+\input{includes/diskusjon.tex}
+
+\section{Konklusjon}
+\input{includes/konklusjon.tex}
+
+\clearpage
+
+\printbibliography
+
+\end{document}
