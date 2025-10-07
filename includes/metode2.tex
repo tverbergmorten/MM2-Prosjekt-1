@@ -1,0 +1,66 @@
+\subsection{Beskrivelse av kode for numerisk løsning}
+\subsubsection{Pakker, variabler og parametere}
+Først importeres nødvendige pakker for å kunne utføre numeriske beregninger og plotte grafiske fremstillinger. Her
+tar vi i bruk numpy for numeriske operasjoner, matplotlib.pyplot for plotting, og matplotlib.animation for å lage 
+animasjoner slik som forklart i forrige seksjon. Deretter setter vi konfigurajsonsparametere som definerer
+fysiske egenskaper til strengen, samt parametere for den numeriske løsningen. Dette inkluderer lengden $L$ på strengen,
+bølgehastigheten $c$ og tiden $s$ vi ønsker å simulere. Videre defineres antall punkter $N$ som skal brukes til å dele 
+opp strengen. Dette påvirker nøyaktigheten til den numeriske løsningen, der flere punkter gir en mer nøyaktig løsning,
+men øker beregningstid og ressursbruk. Videre definerer vi modi for funksjonen, som er antall bølgetopper som skal være 
+tilstede for å lage startformen, hvor en høyere verdi gir skarpere kanter og høyere detaljnivå. \parencite{bølgeSimulering}
+
+Videre setter vi opp betingelser for den grafiske fremstillingen, slik som FPS (frames per second) for animasjonen, og
+tykkelsen for linjen på grafen. For å sette startformen på grafen setter vi 
+
+\begin{verbatim}
+  initial_shape_type = "pluck"
+  pluck_width: float = 0.15
+\end{verbatim}
+
+hvor \verb|"pluck"| indikerer at grafen (i dette tilfellet en streng) skal strekkes, og \verb|pluck_width| definerer hvor bredt området som strekkes er.
+
+\subsubsection{Initialbetingelser funksjonen}
+Hensikten med denne funksjonen er å definere startformen til strengen ved $t=0$, som vil si at funksjonen returnerer $u(x,0)$.
+Funksjonen tar inn en parameter \verb|x|, som er en numpy array med posisjoner langs strengen. Avhengig av verdien til
+\verb|initial_shape_type|, vil funksjonen returnere forskjellige startformer. I dette tilfellet er det \verb|"pluck"| 
+som er implementert som vil gi funksjonen en trekant-/teltformet startform, hvor plukkposisjonen bestemmes av:
+
+\begin{verbatim}
+  elif initial_shape_type == "pluck":
+    center = pluck_position * length_m
+    width = pluck_width * length_m
+    return np.clip(1.0 - np.abs(x - center) / width, 0.0, 1.0)
+\end{verbatim}
+
+hvis du setter inn for verdi i vi har satt i starten av koden, vil dette si at strengen blir plukket slik som 
+illustrert i figuren nedenfor:
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+        width=0.9\textwidth,
+        height=0.5\textwidth,
+        axis lines=left,
+        xlabel={$x$ [m]},
+        ylabel={$u(x,0)$ [m]},
+        xmin=0, xmax=1.0,
+        ymin=-1.1, ymax=1.1,
+        xtick=1,
+        ytick={-1, 0, 1}
+        ]
+        
+
+        \draw (0,0) -- (0.3,0) -- (0.4,1) -- (0.5,0) -- (1,0);
+        \fill (0.4,1) circle (2pt);
+
+
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Startform av strengen ved $t=0$ når den blir plukket ved $x=0.3$ m.}
+\end{figure}
+
+
+
+\subsubsection{}
+\dots

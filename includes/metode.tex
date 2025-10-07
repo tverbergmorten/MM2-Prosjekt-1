@@ -162,6 +162,7 @@ visualisere data. For å forstå komplekse lignigner som bølgeligningen er esse
 For å løse bølgelikningen, trenger vi noen grense- og initial-betingelser. Vi vet at strengen har en fast lengde $l$,
 og er festet i begge ender, dette er grensebetingelsene. Initialbetingelsene skjer ved $t=0$, og da blir strengen
 sluppet løs av en kraft, som har påvirket strengen til å slippes fra en posisjon bestemt av $f(x)$.
+Ettersom strengen blir sluppet, er den partiellderiverte på $t$ ved $t=0$ $u_t(x,0) = 0$.
 
 \subsubsection{Grensebetingelser}
 
@@ -172,41 +173,119 @@ sluppet løs av en kraft, som har påvirket strengen til å slippes fra en posis
 
 \subsubsection{Initialbetingelser}
 
+\begin{align}
+	u(x , o) &= f(x) = \sum_{n=0}^{n=\infty} c_n \sin \left( \frac{n \pi}{l} x \right) 	
+	\label{eq:initialbetingelse1}
+\end{align}
+
+\subsubsection{Løsning med seperasjon av variabler}
+
+Separasjon av variabler går ut på å finne to funksjoner $F(x)$ og $G(t)$, der de tilsammen blir $u(x , t)$. 
+Da får vi separert tid $t$ og posisjon $x$ i to ulike funksjoner.
+
 \begin{equation}
-	u(x , o) = f(x) = \sum_{n=0}^{n=\infty} c_n \sin \left( \frac{n \pi}{l} x \right) 	
-	\label{eq:initialbetingelse}
+	u(x , t) = F(x)G(t)
+	\label{eq:uSeparertPåFOgG}	
 \end{equation}
 
-(\ref{eq:initialbetingelse}) tilsier at ved $t=0$ er 
+De partiellderiverte av $F(x)$ og $G(t)$ vil derfor bli slik:
 
+\begin{equation}
+	u_{tt} = F(x)G''(t), \qquad u_{xx} = F''(x)G(x)
+	\label{eq:separasjonPartiellDeriverte}	
+\end{equation}
 
+Fyller vi de partiellderiverte (\ref{eq:separasjonPartiellDeriverte}) inn i bølgelikningen (\ref{eq:bølgelikningForLøsning}):
 
+\begin{align*}
+  \hspace{35ex}
+  u_{tt} &= c^2 u_{xx} \\
+  \hspace{2ex} F(x)G''(t) &= c^2 F''(x)G(t) \hspace{10ex} \vert 
+  \cdot \frac{1}{c^2 F''(x) G''(t)} \\
+  \frac{F''(x)}{F(x)} &= \frac{1}{c^2} \frac{G''(t)}{G(t)}
+\end{align*}
 
-\subsection{Beskrivelse av kode for numerisk løsning}
-\subsubsection{Pakker, variabler og parametere}
-Først importeres nødvendige pakker for å kunne utføre numeriske beregninger og plotte grafiske fremstillinger. Her
-tar vi i bruk numpy for numeriske operasjoner, matplotlib.pyplot for plotting, og matplotlib.animation for å lage 
-animasjoner slik som forklart i forrige seksjon. Deretter setter vi konfigurajsonsparametere som definerer
-fysiske egenskaper til strengen, samt parametere for den numeriske løsningen. Dette inkluderer lengden $L$ på strengen,
-bølgehastigheten $c$ og tiden $s$ vi ønsker å simulere. Videre defineres antall punkter $N$ som skal brukes til å dele 
-opp strengen. Dette påvirker nøyaktigheten til den numeriske løsningen, der flere punkter gir en mer nøyaktig løsning,
-men øker beregningstid og ressursbruk. Videre definerer vi modi for funksjonen, som er antall bølgetopper som skal være 
-tilstede for å lage startformen, hvor en høyere verdi gir skarpere kanter og høyere detaljnivå. \parencite{bølgeSimulering} 
-For å fremvise en fysisk simulering av en gradvis tykkere streng, kan vi i stedet for å øke $\rho$, senke bølgefarten $c$ i 
-henhold til (\ref{eq:bølgefart}).
+For at begge sider skal være like for alle verdier av $x \in \left[ 0 , l \right]$ og $t < 0$, må siste 
+likningen være lik en konstant verdi. Vi setter den verdien til $- \lambda^2$. Den må være negativ for 
+at vi skal få ett sinus - cosinus svar, og ikke et eksponentiellt svar. Vi ser dette nærmere når vi løser
+differensiallikningene. Vi opphøyer den i andre, for å vise at konstanten alltid er positiv.
+Det kan skrives slik:
 
-Videre setter vi opp betingelser for den grafiske fremstillingen, slik som FPS (frames per second) for animasjonen, og
-tykkelsen for linjen på grafen. For å sette startformen på grafen setter vi 
+\begin{equation*}
+	\frac{F''(x)}{F(x)} = \frac{1}{C^2} \frac{G''(t)}{G(t)} = - \lambda^2
+\end{equation*}
 
-\begin{verbatim}
-  initial_shape_type = "pluck"
-  pluck_width: float = 0.15
-\end{verbatim}
+Da får vi to differensiallikninger vi kan løse, $F(x)$ og $G(t)$. Vi starter med $F(x)$ for der
+kan vi bruke grensebetingelsene (\ref{eq:grensebetingelse0}) og (\ref{eq:grensebetingelsel}) for 
+løsningen.
 
-hvor \verb|"pluck"| indikerer at grafen (i dette tilfellet en streng) skal strekkes, og \verb|pluck_width| definerer hvor bredt området som strekkes er.
+\begin{align*}
+	\hspace{20ex} \frac{F''(x)}{F(x)} &= - \lambda^2 \hspace{10ex} \vert \cdot F(x)\\
+	F''(x) + \lambda^2&F(x) = 0
+\end{align*}
 
-\subsubsection{Initialbetingelser funksjonen}
+Løser vi dette som en 2. ordens homogen differensiallikning blir stykket slik:
 
+\begin{align*}
+	F''(x) + \lambda^2&F(x) = 0 \\ 
+	\Rightarrow r^2 + &\lambda^2 = 0 \\
+	\Rightarrow r_1 = 0 - i \lambda &\vee r_2 = 0 + i \lambda \\
+	\Rightarrow F(x) = e^{0 \cdot x} & \left( \alpha  \cos \lambda x + \beta \sin \lambda x \right) \\
+	\Rightarrow F(x) = \alpha \cos& \lambda x + \beta \sin \lambda x 
+\end{align*}
 
-\subsubsection{}
-\dots
+Vi husker grensebetingelse (\ref{eq:grensebetingelse0}). Da kan vi sette grensebetingelsen inn 
+i likningen.
+
+\begin{align*}
+	u(0 , t) = F(&0)G(t) = 0\\
+	\Rightarrow F(0) = \alpha \cos&\lambda \cdot 0 + \beta \sin \lambda \cdot 0 \\
+	\Rightarrow F(0) = \alpha \cos&0 + \beta \sin 0 \\
+	\Rightarrow F(0) = &\alpha = 0 \\
+	\Rightarrow \alpha =& 0 \\
+	\Rightarrow F(x) = &\beta \sin \lambda x
+\end{align*}
+
+Videre kan vi sette grensebetingelse (\ref{eq:grensebetingelsel}) for å finne verdien til $\lambda$.
+
+\begin{align*}
+	u(l ,t) = F(l&)G(t) = 0 \\
+	\Rightarrow F(l) =& 0 \\
+	\Rightarrow \beta \sin \lambda &\cdot l = 0 \\ 
+	\Rightarrow \lambda = \frac{\pi n}{l}&, \qquad n \in \mathbb{N} \\
+	\Rightarrow F(x) = { \beta }_n & \sin \frac{\pi n}{l} x
+\end{align*}
+
+Nå har vi funnet ut utrykket for $\lambda$ og $F(x)$. Neste seg er å finne uttrykket til $G(t)$.
+
+\begin{align*}
+	G''(t) = - \lambda^2 & c^2 G(t) \\
+	\Rightarrow G''(t) + \lambda^2 & c^2 G(t) = 0 
+\end{align*}
+
+Deretter løser vi dette som en 2. ordens homogen differensiallikning.
+
+\begin{align*}
+	G''(t) + \lambda^2 & c^2 G(t) = 0 \\
+	\Rightarrow r^2 + \lambda^2 c^2 = 0 \\
+	\Rightarrow r_1 = 0 + i \lambda c &\vee r_2 = 0 - i \lambda c \\ 
+	\Rightarrow G(t) = e^{0 t} \gamma&\cos c \lambda t + \psi \sin c \lambda t \\
+	\Rightarrow G(t) = \gamma\cos & c \lambda t + \psi \sin c \lambda t
+\end{align*}
+
+Ettersom at vi har initialbetingelse (\ref{eq:initialbetingelse1}), vil $\psi \sin c \lambda 0 =\psi \sin 0 = 0$
+Derfor ser vi kun videre på cosinus uttrykket. 
+
+\begin{equation*}
+	G(t) = \gamma \cos c \lambda t = \gamma \cos \frac{c \pi n}{l} t
+\end{equation*}
+
+Setter vi uttrykkene for $F(x)$ og $G(t)$ sammen, får vi løsningen til bølgelikningen.
+
+\begin{equation}
+	u(x,t) = \sum_{n=0}^{\infty} c_n 
+	\sin \left( \frac{n \pi}{l} x \right)
+	\cos \left( \frac{n \pi c}{l} t \right)
+	\label{eq:bølgelikningLøst}	
+\end{equation}
+

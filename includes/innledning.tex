@@ -59,11 +59,12 @@ og viser hvordan denne kan utledes fra Newtons 2.~lov anvendt på et lite streng
 Videre kobler vi bølgefarten $c$ til strengens fysiske parametere gjennom
 
 \begin{equation}
-  c^2 = \frac{T}{\mu}, \qquad \mu \approx \rho 
+  c^2 = \frac{T}{\mu}, \qquad \mu \approx \rho \label{eq:bølgefart}
 \end{equation}
 
-der $T$ er spennkraften i strengen, $\rho$ er materialets tetthet og $A$ er strengens tverrsnittsareal.
-Som en løsning på bølgeligningen kan vi anta en harmonisk bølge av formen
+der $T$ er spennkraften i strengen og $\rho$ er materialets tetthet. 
+Tilnærmingen $\mu \approx \rho$ benyttes fordi strengen antas å ha jevn tetthet og liten variasjon i tverrsnitt, slik at massen per lengdeenhet kan betraktes som tilnærmet lik materialets egen tetthet.
+Som en løsning på bølgeligningen kan vi a ta en harmonisk bølge av formen
 
 \begin{equation*}
   u(x,t) = A \sin(kx - \omega t)
@@ -79,7 +80,7 @@ Sammenhengen mellom $\omega$, $k$ og $c$ følger fra dispersjonsrelasjonen
 For en streng med lengde $L$ og faste ender ($u(0,t)=u(L,t)=0$) finner vi at egenfrekvensene blir
 
 \begin{equation*}
-  f_n = \frac{n}{2L}\,c, \qquad n=1,2,3,\dots
+  f_n = \frac{n}{2L}\,c, \qquad n=1,2,3,\dots \label{egenfrekvensene}
 \end{equation*}
 
 Dermed kan vi analysere hvordan variasjon i $T$, $\rho$ og $A$ påvirker både grunnfrekvensen og de høyere overtonene.
@@ -89,7 +90,7 @@ $\sin\!\left(\tfrac{n\pi x}{L}\right)$, der tidsdynamikken for hver modus har fo
 
 \begin{equation*}
     u(x,t) = \sum_{n=1}^{\infty} \bigl[a_n \cos(\omega_n t) + b_n \sin(\omega_n t)\bigr] 
-    \sin\!\left(\tfrac{n\pi x}{L}\right).
+    \sin\!\left(\tfrac{n\pi x}{L}\right). \label{Fourierrekke}
 \end{equation*}
 
 der koeffisientene $a_n$ og $b_n$ bestemmes av de gitte initialbetingelsene.
