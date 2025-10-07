@@ -1,17 +1,94 @@
 \subsection{Teoretiske resultater}
 \subsubsection{Uteldning av egenfrekvenser}
-\dots
+For en streng som er festet i to punkter er hastigheten $v$ gitt ved:
+
+\begin{equation*}
+    v = \sqrt{\frac{T}{\mu}}
+\end{equation*}
+Hvor $T$ er spenningen i strengen og $\mu$ er massetettheten. 
+
+Forholdet mellom hastighet ($v$), frekvens ($f$) og bølgelengde ($\lambda$) er gitt ved
+
+\begin{equation*}
+    v = f \lambda
+\end{equation*}  
+
+Når strengen er festet i begge ender, kan den bare svinge i bestemte mønstre, kalt normalmoduser.
+Den enkleste normalmodusen er grunnmodusen, som har en bølgelengde som er dobbelt så lang som strengen:
+
+\begin{equation*}
+    \lambda_1 = 2L
+\end{equation*}
+Hvor $L$ er lengden på strengen.
+
+Frekvensen til grunnmodusen kan dermed uttrykkes som:
+
+\begin{equation*}
+    f_1 = \frac{v}{\lambda} = \frac{1}{2L} \sqrt{\frac{T}{\mu}}
+\end{equation*}
+Dette er Mersenne's likning.
+
+
+
 
 \subsubsection{Normalmoduser}
-\dots
 
+Det er uendelig mange normalmoduser for en streng som er festet i begge ender.
+Som nevnt tidligere er grunnmodusen den enkleste normalmodusen og er den med lavest frekvens.
+
+Hver påfølgende normalmodus har en frekvens som er et helt multiplum av grunnmodusen,
+hvor $n$ er et positivt heltall som representerer modustallet.
+
+Dette kan utledes ved å merke seg at for den $n$-te normalmodusen, er bølgelengden gitt ved:
+
+\begin{equation*}
+    \lambda_n = \frac{2L}{n}
+\end{equation*}
+Ved å sette dette inn i bølgeformelen $v = f \lambda$, får vi:
+
+\begin{equation*}
+    f_n = \frac{v}{\lambda_n} = \frac{1}{\frac{2L}{n}} \sqrt{\frac{T}{\mu}} = \frac{n}{2L} \sqrt{\frac{T}{\mu}}
+\end{equation*}
+Dermed er frekvensen til den $n$-te normalmodusen:
+
+\begin{equation*}
+    f_n = n f_1 = \frac{n}{2L} \sqrt{\frac{T}{\mu}}
+\end{equation*}
+Hvor $n = 1, 2, 3, \ldots$.
 
 
 
 
 \subsection{Numeriske resultater}
 \subsubsection{Visualisering av strengens bevegelse}
-\dots
+\begin{figure}[h!]
+\centering
+\begin{tikzpicture}[scale=1.0]
+  % aksene
+  \draw[->] (-0.5,0) -- (11,0) node[right] {$x$};
+  \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+
+  % parametre
+  \def\A{2} % amplitude
+  \def\nodes{0, 5, 10} % noder
+
+  % stående bølge: y = 2*sin(x), snapshot
+  \draw[blue, thick, samples=200, domain=0:10] 
+        plot (\x, {\A*sin(deg(pi*\x/5))});
+
+  % markere noder
+  \foreach \x in \nodes {
+    \fill[black] (\x,0) circle (2pt);
+  }
+
+  % litt forskjøvet bølge (stiplet)
+  \draw[red, thick, dashed, samples=200, domain=0:10] 
+        plot (\x, {\A*sin(deg(pi*\x/5))*0.7});
+\end{tikzpicture}
+\end{figure}
+
+
+
 
 \subsubsection{Sammenligning med teoretiske resultater}
 \dots

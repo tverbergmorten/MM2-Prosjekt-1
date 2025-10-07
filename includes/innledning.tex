@@ -6,10 +6,10 @@ og elektromagnetiske bølger i vakuum.
 
 I dette prosjektet tar vi utgangspunkt i den klassiske éndimensjonale bølgeligningen:
 
-\begin{equation*}
+\begin{equation}
     \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}
     \label{eq:bølgeligningen}
-\end{equation*}
+\end{equation}
 
 der $u(x,t)$ beskriver utslaget til systemet, og $c$ er bølgefarten bestemt av materialparametere. 
 Vi viser hvordan ligningen kan utledes fra enkle fysiske prinsipper, og hvordan ulike rand- og 
@@ -51,29 +51,29 @@ teori og praksis på en strukturert måte.
 Vi starter med den klassiske bølgeligningen, som beskriver utslaget $u(x,t)$ til en streng i rotnormal retning:
 
 \begin{equation*}
-  \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2},
+  \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}
   \label{eq:bolgeligningen}
 \end{equation*}
 
 og viser hvordan denne kan utledes fra Newtons 2.~lov anvendt på et lite strengsegment.
 Videre kobler vi bølgefarten $c$ til strengens fysiske parametere gjennom
 
-\begin{equation*}
-  c = \sqrt{\frac{T}{\mu}}, \qquad \mu = \rho A,
-\end{equation*}
+\begin{equation}
+  c^2 = \frac{T}{\mu}, \qquad \mu \approx \rho 
+\end{equation}
 
 der $T$ er spennkraften i strengen, $\rho$ er materialets tetthet og $A$ er strengens tverrsnittsareal.
 Som en løsning på bølgeligningen kan vi anta en harmonisk bølge av formen
 
 \begin{equation*}
-  u(x,t) = A \sin(kx - \omega t),
+  u(x,t) = A \sin(kx - \omega t)
 \end{equation*}
 
 der $A$ er amplituden, $k=\tfrac{2\pi}{\lambda}$ er bølgetallet og $\omega = 2\pi f$ er vinkelfrekvensen.  
 Sammenhengen mellom $\omega$, $k$ og $c$ følger fra dispersjonsrelasjonen
 
 \begin{equation*}
-  \omega = c k.
+  \omega = c k
 \end{equation*}
 
 For en streng med lengde $L$ og faste ender ($u(0,t)=u(L,t)=0$) finner vi at egenfrekvensene blir
@@ -93,8 +93,9 @@ $\sin\!\left(\tfrac{n\pi x}{L}\right)$, der tidsdynamikken for hver modus har fo
 \end{equation*}
 
 der koeffisientene $a_n$ og $b_n$ bestemmes av de gitte initialbetingelsene.
-For en detaljert fremstilling og utledning av denne metoden, se LibreTexts: 
-\textit{Solving the Wave Equation with Fourier Transforms} \parencite{libretextsWave}
+Fourier rekken gjør det mulig å beskrive komplekse bølgeformer som en sum av enklere, harmoniske svingninger.  
+Denne metoden gjør det mulig å uttrykke en strengs bevegelse som en superposisjon av mange enkeltsvingninger med ulike frekvenser og amplituder.  
+Ved å bruke denne representasjonen kan man analysere hvordan ulike fysiske faktorer, som spennkraft og tetthet, påvirker bølgefarten og tonehøyden på strengen \parencite{libretextsWave}
 
 
 
