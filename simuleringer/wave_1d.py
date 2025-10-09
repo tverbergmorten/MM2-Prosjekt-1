@@ -97,7 +97,7 @@ def animate(frames: np.ndarray, title: str):
         update,
         frames=range(0, len(frames), 1),
         init_func=init,
-        interval=3000 / fps,    # ekte fps
+        interval=1000 / (0.25* fps),    # ekte fps
         blit=True,
     )
     plt.show()
@@ -111,7 +111,7 @@ if __name__ == "__main__":
     # ---- Lagre animasjon som MP4 ----
     anim.save(
         "bolgeligning_fourier.mp4",
-        fps=fps,
+        fps=15,
         dpi=200,
         writer="ffmpeg",
     )
