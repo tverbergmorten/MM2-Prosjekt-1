@@ -57,10 +57,31 @@
 \addto\captionsnorsk{%
   \renewcommand{\contentsname}{Innholdsfortegnelse}%      Endrer "Innhold" til "Innholdsfortegnelse"
 }
+% Fargekoding for kode i tekst med \listinline og begin{lstlisting}
+\definecolor{vscodeKeyword}{HTML}{569CD6}  % blå keywords
+\definecolor{vscodeString}{HTML}{CE9178}   % salmon strenger  ← denne er nøkkelen
+\definecolor{vscodeComment}{HTML}{6A9955}  % grønn kommentar
+\definecolor{vscodeType}{HTML}{4EC9B0}     % teal typer/builtins
+\definecolor{vscodeText}{HTML}{202020}     % vanlig tekst
 
-% \DefineBibliographyStrings{norsk}{
-%   references = {Kildehenvisninger},                     Kan legges inn hvis ønskelig for å gjøre "Referanser" om til "Kildehenvisninger"
-% }
+\lstset{
+  language=Python,
+  backgroundcolor=\color{black!5},
+  basicstyle=\ttfamily\small\color{vscodeText},
+  keywordstyle=\color{vscodeKeyword}\bfseries,
+  stringstyle=\color{vscodeString},         % <-- mer “riktig” string-farge
+  commentstyle=\color{vscodeComment},
+  emph={self,np,plt,pd,range,len},
+  emphstyle=\color{vscodeType},
+  showstringspaces=false,
+  breaklines=true,
+  tabsize=4,
+  frame=none,
+  numbers=none,
+  aboveskip=0.9\baselineskip,
+  belowskip=1.1\baselineskip,
+}
+
 
 \titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
 \titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.5em}{}

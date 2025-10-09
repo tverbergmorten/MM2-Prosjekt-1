@@ -97,7 +97,7 @@ def animate(frames: np.ndarray, title: str):
         update,
         frames=range(0, len(frames), 1),
         init_func=init,
-        interval=1000 / fps,    # ekte fps
+        interval=3000 / fps,    # ekte fps
         blit=True,
     )
     plt.show()

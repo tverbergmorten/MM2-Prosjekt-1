@@ -52,13 +52,13 @@ En slik funksjon er derfor \textit{odde} (antisymmetrisk), og beskrives med en r
 Fourierrekken for en slik odde, halvperiodisk funksjon $f(x)$ definert på intervallet $[0,L]$ blir da
 
 \begin{equation*}
-f(x) = \sum_{n=1}^{\infty} b_n \sin\left(\frac{n\pi x}{L}\right), \quad x \in [0,L],
+f(x) = \sum_{n=1}^{\infty} c_n \sin\left(\frac{n\pi x}{L}\right), \quad x \in [0,L]
 \end{equation*}
 
-der koeffisientene $b_n$ beregnes som
+der koeffisientene $c_n$ beregnes som
 
 \begin{equation*}
-b_n = \frac{2}{L} \int_{0}^{L} f(x) \sin\left(\frac{n\pi x}{L}\right) dx.
+c_n = \frac{2}{L} \int_{0}^{L} f(x) \sin\left(\frac{n\pi x}{L}\right) dx
 \end{equation*}
 
 Ved å bruke Fourierrekker på denne formen kan man uttrykke et vilkårlig startutslag $u(x,0)$ som en sum av sinusfunksjoner.  
@@ -66,7 +66,7 @@ Deretter kan bølgeligningen løses separat for hver sinuskomponent, og til slut
 Denne metoden gir en effektiv og nøyaktig måte å beskrive bølgebevegelser på, og danner grunnlaget for den generelle løsningen:
 
 \begin{equation*}
-u(x,t) = \sum_{n=1}^{\infty} \left[a_n \cos(\omega_n t) + b_n \sin(\omega_n t)\right] \sin\left(\frac{n\pi x}{L}\right),
+u(x,t) = \sum_{n=1}^{\infty} \left[a_n \cos(\omega_n t) + b_n \sin(\omega_n t)\right] \sin\left(\frac{n\pi x}{L}\right)
 \end{equation*}
 
 der $\omega_n = \frac{n\pi c}{L}$ er egenfrekvensene som bestemmes av bølgefarten $c$ og strengens lengde $L$.
@@ -84,7 +84,7 @@ Egenfrekvensene bestemmes av strengens lengde $L$, bølgefart $c$, og heltallet 
 Den tilhørende romlige egenfunksjonen er
 
 \begin{equation*}
-X_n(x) = \sin\left(\frac{n\pi x}{L}\right).
+X_n(x) = \sin\left(\frac{n\pi x}{L}\right)
 \end{equation*}
 
 Den første modusen ($n=1$) kalles \textit{grunnfrekvensen}, mens høyere $n$ gir overtoner eller harmoniske frekvenser.  
@@ -96,7 +96,7 @@ Løsningen på bølgeligningen kan representere både \textit{løpende} og \text
 En løpende bølge har formen
 
 \begin{equation*}
-u(x,t) = f(x - ct) + g(x + ct),
+u(x,t) = f(x - ct) + g(x + ct)
 \end{equation*}
 
 der $f$ og $g$ beskriver bølger som beveger seg i motsatt retning med fart $v$.  
@@ -105,7 +105,7 @@ Når to slike bølger interfererer, kan de danne et mønster som ikke forplanter
 For en streng med faste endepunkter oppstår stående bølger når bølgelengden tilfredsstiller betingelsen
 
 \begin{equation*}
-\lambda_n = \frac{2L}{n}.
+\lambda_n = \frac{2L}{n}
 \end{equation*}
 
 Stående bølger er derfor direkte knyttet til strengens egenfrekvenser, og bestemmer hvor bølgetopper (antinoder) og nullpunkter (noder) oppstår langs strengen \parencite{libretextsStandingWaves}.
@@ -126,7 +126,7 @@ Dette gjør at amplituden av bølgen reduseres over tid.
 En enkel modell for dempet bølgebevegelse kan uttrykkes som
 
 \begin{equation*}
-\frac{\partial^2 u}{\partial t^2} + 2\beta \frac{\partial u}{\partial t} = c^2 \frac{\partial^2 u}{\partial x^2},
+\frac{\partial^2 u}{\partial t^2} + 2\beta \frac{\partial u}{\partial t} = c^2 \frac{\partial^2 u}{\partial x^2}
 \end{equation*}
 
 der $\beta$ beskriver dempningskonstanten.  
@@ -146,7 +146,7 @@ Fenomenet kalles \textit{inharmonisitet}, og det er en viktig årsak til at pian
 Den fysiske årsaken ligger i strengens stivhet, som legger til et ekstra ledd i bølgeligningen:  
 
 \begin{equation*}
-\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2} - \kappa^2 \frac{\partial^4 u}{\partial x^4},
+\frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2} - \kappa^2 \frac{\partial^4 u}{\partial x^4}
 \end{equation*}
 
 der $\kappa$ er en konstant som beskriver strengens stivhet.  

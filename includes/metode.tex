@@ -151,8 +151,6 @@ For å plotte grafen har vi brukt matplotlib.pyplot, som er et vanlig grafikkbib
 visualisere data. For å forstå komplekse lignigner som bølgeligningen er essensielt å kunne visualisere resultatene på en enkel måte.
 
 \subsubsection{Løsning med separasjon av variable}
-\dots
-
 \begin{equation}
 	u_{tt} = c^2 u_{xx} \qquad \iff \qquad 
 	\frac{\partial^2 u}{\partial t^2} = \frac{T}{\rho} \frac{\partial^2 u}{\partial x^2}	
@@ -164,21 +162,19 @@ og er festet i begge ender, dette er grensebetingelsene. Initialbetingelsene skj
 sluppet løs av en kraft, som har påvirket strengen til å slippes fra en posisjon bestemt av $f(x)$.
 Ettersom strengen blir sluppet, er den partiellderiverte på $t$ ved $t=0$ $u_t(x,0) = 0$.
 
-\subsubsection{Grensebetingelser}
+Grensebetingelsene for funksjonen $u(x,t)$ blir derfor:
 
 \begin{align}
 	u(0 , t) = 0 \label{eq:grensebetingelse0}\\
 	u(l , t) = 0 \label{eq:grensebetingelsel}
 \end{align}
 
-\subsubsection{Initialbetingelser}
+og initialbetingelsene for funksjonen $u(x,t)$ blir:
 
 \begin{align}
 	u(x , o) &= f(x) = \sum_{n=0}^{n=\infty} c_n \sin \left( \frac{n \pi}{l} x \right) 	
 	\label{eq:initialbetingelse1}
 \end{align}
-
-\subsubsection{Løsning med seperasjon av variabler}
 
 Separasjon av variabler går ut på å finne to funksjoner $F(x)$ og $G(t)$, der de tilsammen blir $u(x , t)$. 
 Da får vi separert tid $t$ og posisjon $x$ i to ulike funksjoner.

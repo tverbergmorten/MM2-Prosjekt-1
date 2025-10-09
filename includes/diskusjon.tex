@@ -1,12 +1,79 @@
 \subsection{Tolkning av resultater}
 \subsubsection{Kort oppsummering av funn}
-\dots
+I dette arbeidet er bølgelikningen for en streng utledet både teoretisk og implementert numerisk. Utgangspunktet er en fysisk modell av en streng festet i begge ender, og påvirket av en spenning, der man ved hjelp av Newtons lover og Taylor-utvikling kommer fram til bølgelikningen:
+
+\begin{equation*}
+\frac{\partial^2 u}{\partial t^2} = \frac{T}{\rho} \frac{\partial^2 u}{\partial x^2}
+\end{equation*}
+
+Her er \( T \) spenningen i strengen, \( \rho \) massetettheten, og \( u(x, t) \) beskriver utslaget til strengen. Bølgehastigheten defineres som
+
+\begin{equation*}
+c^2 = \frac{T}{\rho}
+\end{equation*}
+
+Den teoretiske løsningen gjøres ved separasjon av variable, hvor løsningen antas å være et produkt av en romlig funksjon \( F(x) \) og en tidsavhengig funksjon \( G(t) \). Dette fører til to separate differensiallikninger, som løses med sinus- og cosinus-funksjoner. Ved å bruke grensebetingelser for en streng som er fast i begge ender, finner man en løsning som uttrykkes som en uendelig sum (Fourier-rekke) av normalmoduser:
+
+\begin{equation*}
+u(x, t) = \sum_{n=1}^{\infty} c_n \sin\left(\frac{n\pi x}{l}\right)\cos\left(\frac{n\pi c t}{l}\right)
+\end{equation*}
+
+Den numeriske løsningen er implementert i Python, hvor bibliotekene \texttt{NumPy} og \texttt{Matplotlib} benyttes til henholdsvis beregninger og visualisering. Startformen til strengen ved \( t = 0 \) defineres som en trekantform (\textit{pluck}), som er en forenklet, men effektiv modell av hvordan en streng kan plukkes i praksis. Videre brukes \texttt{Matplotlib.animation} for å vise hvordan strengen beveger seg over tid.
+
+Til slutt beregnes de teoretiske egenfrekvensene for strengen. Når strengen er festet i begge ender, kan den kun vibrere i bestemte mønstre, kalt normalmoduser. Grunnmodusen har bølgelengde
+
+\begin{equation*}
+\lambda_1 = 2L
+\end{equation*}
+
+og tilhørende frekvens er gitt av Mersenne's formel:
+
+\begin{equation*}
+f_1 = \frac{1}{2L} \sqrt{\frac{T}{\mu}}
+\end{equation*}
+
+Høyere moduser har frekvenser som er heltallsmultipler av grunnmodusen:
+
+\begin{equation*}
+f_n = n f_1 = \frac{n}{2L} \sqrt{\frac{T}{\mu}}, \quad n = 1, 2, 3, \dots
+\end{equation*}
+
+
+
 
 \subsubsection{Styrker og svakheter i modellen}
 \dots
 
-\subsubsection{Effekten av parametre}
-\dots
+
+
+\subsubsection{Effekt av parametervariasjon}
+
+Bølgebevegelsen til en streng er sterkt avhengig av de fysiske parameterne som inngår i bølgelikningen. Spenningen \( T \), massetettheten per lengdeenhet \( \mu \), og strengens lengde \( L \) påvirker både bølgehastigheten og egenfrekvensene.
+
+Bølgehastigheten \( c \) i strengen bestemmes av forholdet mellom spenningen og massetettheten, og uttrykkes som
+
+\begin{equation*}
+c = \sqrt{\frac{T}{\mu}}.
+\end{equation*}
+Dette betyr at en økning i spenningen \( T \) fører til at bølgene beveger seg raskere langs strengen, mens en økning i massetettheten \( \mu \) gir en tregere bølgebevegelse. 
+
+Når det gjelder strengens vibrasjonsmønstre, kan den kun svinge ved bestemte frekvenser, kalt egenfrekvenser, på grunn av de faste endebetingelsene. Grunnfrekvensen \( f_1 \) er gitt ved Mersennes formel
+
+\begin{equation*}
+f_1 = \frac{1}{2L} \sqrt{\frac{T}{\mu}},
+\end{equation*}
+og de høyere normalmodusene følger som heltallsmultipler av denne:
+
+\begin{equation*}
+f_n = \frac{n}{2L} \sqrt{\frac{T}{\mu}}, \quad n=1,2,3,\ldots
+\end{equation*}
+
+Fra disse uttrykkene kan man se at økning i spenning \( T \) fører til høyere frekvenser, noe som tilsvarer en lysere tone når strengen vibrerer. Økt massetetthet \( \mu \) gir lavere frekvenser og dermed en dypere tone. Lengden på strengen \( L \) er også avgjørende. En lengre streng har lavere frekvenser, fordi bølgelengdene øker og dermed tonehøyden synker.
+
+I den numeriske simuleringen reflekteres disse effektene tydelig. Ved å øke \( T \) ser man at strengen svinger raskere i animasjonen, mens økt \( \mu \) eller \( L \) resulterer i tregere bevegelser og lavere frekvenser.
+
+
+
 
 \subsubsection{Sammenligning av analytisk og numerisk løsning}
 \dots

@@ -61,33 +61,9 @@ Hvor $n = 1, 2, 3, \ldots$.
 
 \subsection{Numeriske resultater}
 \subsubsection{Visualisering av strengens bevegelse}
-\begin{figure}[h!]
-\centering
-\begin{tikzpicture}[scale=1.0]
-  % aksene
-  \draw[->] (-0.5,0) -- (11,0) node[right] {$x$};
-  \draw[->] (0,-2.5) -- (0,2.5) node[above] {$y$};
+For å se resultatene av den numeriske løsningen kan du besøke denne kilden: \parencite{}.
 
-  % parametre
-  \def\A{2} % amplitude
-  \def\nodes{0, 5, 10} % noder
-
-  % stående bølge: y = 2*sin(x), snapshot
-  \draw[blue, thick, samples=200, domain=0:10] 
-        plot (\x, {\A*sin(deg(pi*\x/5))});
-
-  % markere noder
-  \foreach \x in \nodes {
-    \fill[black] (\x,0) circle (2pt);
-  }
-
-  % litt forskjøvet bølge (stiplet)
-  \draw[red, thick, dashed, samples=200, domain=0:10] 
-        plot (\x, {\A*sin(deg(pi*\x/5))*0.7});
-\end{tikzpicture}
-\end{figure}
-
-
+{\color{red}**Forklaring av hva vi ser**}
 
 
 \subsubsection{Sammenligning med teoretiske resultater}

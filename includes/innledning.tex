@@ -83,22 +83,22 @@ For en streng med lengde $L$ og faste ender ($u(0,t)=u(L,t)=0$) finner vi at ege
   f_n = \frac{n}{2L}\,c, \qquad n=1,2,3,\dots \label{egenfrekvensene}
 \end{equation*}
 
-Dermed kan vi analysere hvordan variasjon i $T$, $\rho$ og $A$ påvirker både grunnfrekvensen og de høyere overtonene.
-En vilkårlig strengutslag $u(x,0)$ kan videre uttrykkes som en sum av harmoniske svingninger ved hjelp av Fourier-rekker.
-Den generelle løsningen for $u(x,t)$ kan uttrykkes med moduser 
-$\sin\!\left(\tfrac{n\pi x}{L}\right)$, der tidsdynamikken for hver modus har formen 
+Dermed kan vi analysere hvordan variasjon i $T$, $\rho$ og $A$ påvirker både grunnfrekvensen og de høyere overtonene.  
+En vilkårlig strengutslag $u(x,0)$ kan videre uttrykkes som en sum av harmoniske svingninger ved hjelp av Fourier-rekker.  
+Den generelle løsningen for $u(x,t)$ kan da uttrykkes som en superposisjon av moduser 
+$\sin\!\left(\tfrac{n\pi x}{L}\right)$, der hver modus har en tidsavhengig del gitt ved 
+$\cos\!\left(\tfrac{n\pi c}{L}t\right)$:
 
 \begin{equation*}
-    u(x,t) = \sum_{n=1}^{\infty} \bigl[a_n \cos(\omega_n t) + b_n \sin(\omega_n t)\bigr] 
-    \sin\!\left(\tfrac{n\pi x}{L}\right). \label{Fourierrekke}
+    u(x,t) = \sum_{n=0}^{\infty} c_n 
+    \sin\!\left(\tfrac{n\pi x}{L}\right)
+    \cos\!\left(\tfrac{n\pi c}{L}t\right)
 \end{equation*}
 
-der koeffisientene $a_n$ og $b_n$ bestemmes av de gitte initialbetingelsene.
-Fourier rekken gjør det mulig å beskrive komplekse bølgeformer som en sum av enklere, harmoniske svingninger.  
+Koeffisientene $c_n$ bestemmes av de gitte initialbetingelsene.  
+Fourier-rekken gjør det mulig å beskrive komplekse bølgeformer som en sum av enklere, harmoniske svingninger.  
 Denne metoden gjør det mulig å uttrykke en strengs bevegelse som en superposisjon av mange enkeltsvingninger med ulike frekvenser og amplituder.  
 Ved å bruke denne representasjonen kan man analysere hvordan ulike fysiske faktorer, som spennkraft og tetthet, påvirker bølgefarten og tonehøyden på strengen \parencite{libretextsWave}
-
-
 
 Til slutt vil vi sammenligne de utledede teoretiske uttrykkene med numeriske simuleringer 
 av bølgeligningen for representative parametere, for å bekrefte modellens gyldighet og illustrere praktiske effekter.
