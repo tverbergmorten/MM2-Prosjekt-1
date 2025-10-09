@@ -107,3 +107,30 @@ def animate(frames: np.ndarray, title: str):
 if __name__ == "__main__":
     U = simulate_fourier()
     anim = animate(U, f"Bølgeligning - Fourierserie (N={num_modes})")
+
+    # ---- Lagre animasjon som MP4 ----
+    anim.save(
+        "bolgeligning_fourier.mp4",
+        fps=fps,
+        dpi=200,
+        writer="ffmpeg",
+    )
+
+    # ---- Lagre stillbilde ved t = 0 ----
+    t_index = 0
+    u0 = U[t_index]
+
+    plt.figure()
+    plt.plot(x, u0, lw=line_width)
+    plt.xlabel("x [m]")
+    plt.ylabel("u(x,t) [arb. enhet]")
+    plt.title("Bølgeligning Simulering")
+    plt.grid(True)
+
+    # legg til verdi i plottet
+    text_x = 0.02 * length_m         # 2 % inn fra venstre kant
+    text_y = np.max(u0) * 0.9        # 90 % opp på y-aksen
+    plt.text(text_x, text_y, f"t = {t[t_index]:.3f} s", fontsize=11, color="black")
+
+    plt.savefig("bolgeligning_t0.png", dpi=300)
+    plt.close()
