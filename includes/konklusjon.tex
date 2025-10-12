@@ -2,11 +2,14 @@
 
 \subsubsection{Kort sammendrag av prosjektets hensikt og mål}
 
-Hensikten med prosjektet har vært å klargjøre den éndimensjonale bølgeligningen som en modell for en streng med faste ender, og å vise hvordan modellens parametere kan knyttes direkte til fysiske størrelser som spennkraft, lineær massetetthet og lengde. Gjennom den teoretiske delen av arbeidet utledet vi bølgeligningen ved hjelp av Newtons 2.~lov, og vi viste hvordan løsningen kan beskrives analytisk ved å bruke separasjon av variable. Dette førte til et uttrykk for strengens egenfrekvenser og normalmoduser, som danner grunnlaget for forståelsen av hvordan en streng kan svinge i bestemte mønstre og produsere toner med bestemte frekvenser.
+Hensikten med prosjektet har vært å bruke den éndimensjonale bølgeligningen til å modellere en streng med faste ender, 
+og å undersøke hvordan parametere som spennkraft, massetetthet og lengde påvirker bølgefarten og tonehøyden. 
+Bølgeligningen ble utledet fra Newtons 2.~lov anvendt på et lite strengsegment, der sammenhengen mellom de fysiske størrelsene ble tydeliggjort gjennom forholdet 
+$c^2 = \tfrac{T}{\rho}$. Dette gir et direkte uttrykk for hvordan bølgefarten avhenger av strengens spennkraft og massetetthet.  
 
-Videre implementerte vi en numerisk simulering for å undersøke strengens bevegelse under representative startbetingelser, som en plukkebevegelse. Denne delen av prosjektet gjorde det mulig å sammenligne de teoretiske resultatene med en praktisk beregning, og å se hvordan bølgelengder, noder og buker faktisk utvikler seg over tid. Simuleringen bekreftet den teoretiske modellen og illustrerte tydelig hvordan bølgefarten og frekvensene påvirkes av spennkraft og tetthet.
-
-Til slutt diskuterte vi hvordan modellen kunne utvides for å beskrive mer realistiske forhold, blant annet ved å ta hensyn til resonans, demping og dispersjon. Slike utvidelser gir en mer presis beskrivelse av virkelige strenger, som for eksempel en gitarstreng, men grunnideen forblir den samme: bølgeligningen gir et matematisk rammeverk som på en enkel, men effektiv måte forklarer samspillet mellom fysiske parametere og bølgefenomener.
+Den analytiske løsningen ble funnet ved hjelp av separasjon av variable, og beskriver hvordan en bølge brer seg og reflekteres mellom faste endepunkter. 
+Den numeriske delen av prosjektet besto i å simulere strengens bevegelse etter en plukkebevegelse, slik at vi kunne sammenligne teori og praksis. 
+Resultatene viste god overensstemmelse mellom den analytiske modellen og den numeriske simuleringen, og illustrerte tydelig hvordan variasjoner i spennkraft og tetthet påvirker bølgefarten og utslaget.  
 
 \subsubsection{Teoretisk utledning}
 \begin{enumerate}
@@ -33,23 +36,39 @@ Til slutt diskuterte vi hvordan modellen kunne utvides for å beskrive mer reali
 
 \subsubsection{Numerisk implementasjon}
 
-I den numeriske delen av prosjektet ble bølgeligningen implementert i Python ved bruk av blant annet \texttt{numpy} for beregninger og \texttt{matplotlib} for visualisering. Strengen ble delt opp i et gitt antall punkter langs lengden $L$, slik at forskyvningen $u(x,t)$ kunne beregnes i diskrete tidstrinn. Parametere som bølgefart $c$, spenning $T$, og massetetthet $\rho$ ble definert ut fra de teoretiske sammenhengene, slik at simuleringen kunne sammenlignes direkte med den analytiske løsningen. 
+I den numeriske delen av prosjektet ble bølgeligningen implementert i Python ved bruk av blant annet \texttt{numpy} for beregninger og \texttt{matplotlib} for visualisering. 
+Strengen ble delt opp i et gitt antall punkter langs lengden $L$, slik at forskyvningen $u(x,t)$ kunne beregnes i diskrete tidstrinn. 
+Parametere som bølgefart $c$, spenning $T$, og massetetthet $\rho$ ble definert ut fra de teoretiske sammenhengene, slik at simuleringen kunne sammenlignes direkte med den analytiske løsningen. 
 
-Som startbetingelse ble det valgt en trekantformet utslagsprofil som representerer en streng som plukkes på et bestemt punkt. Dette ga et realistisk bilde av hvordan bølgene oppstår og reflekteres mellom endene. Gjennom animasjonen ble det tydelig hvordan stående bølger dannes, og hvordan noder og buker opptrer akkurat der teorien forutsier det. Den numeriske løsningen viste dermed god overensstemmelse med den teoretiske modellen på et beskrivende nivå, selv om små avvik kunne observeres på grunn av den diskrete tids- og romoppløsningen.
+Som startbetingelse ble det valgt en trekantformet utslagsprofil som representerer en streng som plukkes på et bestemt punkt. Dette ga et realistisk bilde av hvordan bølgene 
+oppstår og reflekteres mellom endene. Gjennom animasjonen ble det tydelig hvordan stående bølger dannes, og hvordan noder og buker opptrer akkurat der teorien forutsier det. 
+Den numeriske løsningen viste dermed god overensstemmelse med den teoretiske modellen på et beskrivende nivå, selv om små avvik kunne observeres på grunn av den diskrete tids- og romoppløsningen.
 
 \subsection{Hva har vi lært?}
 \subsubsection{Hva vi har lært om differensialligninger og numeriske metoder}
 
-Gjennom dette prosjektet har vi lært hvordan partielle differensialligninger kan brukes til å beskrive bølgefenomener i fysiske systemer. Den éndimensjonale bølgeligningen viser hvordan en liten forskyvning i et punkt på en streng påvirker nabopunktene, og hvordan disse bevegelsene forplanter seg som bølger. Ved å utlede ligningen fra Newtons 2.~lov ble det tydelig hvordan matematiske prinsipper henger sammen med fysiske størrelser som spenning, tetthet og akselerasjon. 
+Gjennom dette prosjektet har vi lært hvordan partielle differensialligninger kan brukes til å beskrive bølgefenomener i fysiske systemer. Den éndimensjonale bølgeligningen viser 
+hvordan en liten forskyvning i et punkt på en streng påvirker nabopunktene, og hvordan disse bevegelsene forplanter seg som bølger. Ved å utlede ligningen fra Newtons 2.~lov ble det tydelig 
+hvordan matematiske prinsipper henger sammen med fysiske størrelser som spenning, tetthet og akselerasjon. 
 
-Vi har også fått erfaring med hvordan slike ligninger kan løses både analytisk og numerisk. Den analytiske løsningen, der man bruker separasjon av variable og Fourier-rekker, gir innsikt i hvordan systemet kan beskrives som en sum av stående bølger med bestemte egenfrekvenser. Samtidig viste den numeriske metoden hvordan man kan beregne og visualisere bevegelsen steg for steg i tid. Dette gjorde det lettere å forstå hvordan kontinuerlige prosesser kan beskrives ved hjelp av diskrete beregninger, og hvor viktig valg av tidssteg og romoppløsning er for stabiliteten og nøyaktigheten til løsningen.
+Vi har også fått erfaring med hvordan slike ligninger kan løses både analytisk og numerisk. Den analytiske løsningen, der man bruker separasjon av variable og Fourier-rekker, gir innsikt 
+i hvordan systemet kan beskrives som en sum av stående bølger med bestemte egenfrekvenser. Samtidig viste den numeriske metoden hvordan man kan beregne og visualisere bevegelsen steg for steg i tid. 
+Dette gjorde det lettere å forstå hvordan kontinuerlige prosesser kan beskrives ved hjelp av diskrete beregninger, og hvor viktig valg av tidssteg og romoppløsning er for stabiliteten og nøyaktigheten til løsningen.
 
 \subsubsection{Hvordan implementere numeriske metoder kan øke forståelsen av teoretiske konsepter}
 
-Ved å implementere bølgeligningen numerisk fikk vi en mer intuitiv forståelse av de teoretiske resultatene. Når vi så den simulerte strengen bevege seg, ble det lettere å knytte matematiske uttrykk som egenmoduser og noder til faktiske fysiske fenomener. Visualiseringene gjorde det også enklere å forstå hvordan forskjellige startbetingelser påvirker hvilke bølgeformer som oppstår, og hvordan energien fordeler seg mellom modene. 
+Ved å implementere bølgeligningen numerisk fikk vi en mer intuitiv forståelse av de teoretiske resultatene. Når vi så den simulerte strengen bevege seg, ble det lettere å knytte 
+matematiske uttrykk som egenmoduser og noder til faktiske fysiske fenomener. Visualiseringene gjorde det også enklere å forstå hvordan forskjellige startbetingelser påvirker hvilke bølgeformer som oppstår, 
+og hvordan energien fordeler seg mellom modene. 
 
-Den numeriske implementasjonen fungerte som et bindeledd mellom teori og praksis. Der de teoretiske utledningene kan virke abstrakte, gir den numeriske løsningen et konkret bilde på hvordan systemet oppfører seg over tid. Det ble tydelig at små endringer i parametere, som økt spenning eller redusert massetetthet, fører til høyere bølgefart og dermed høyere tonehøyde — akkurat slik teorien forutsier. På denne måten har vi erfart at numeriske metoder ikke bare er et verktøy for å finne løsninger, men også et middel for å styrke forståelsen av de fysiske prinsippene som ligger bak.
+Den numeriske implementasjonen fungerte som et bindeledd mellom teori og praksis. Der de teoretiske utledningene kan virke abstrakte, gir den numeriske løsningen et konkret bilde 
+på hvordan systemet oppfører seg over tid. Det ble tydelig at små endringer i parametere, som økt spenning eller redusert massetetthet, fører til høyere bølgefart og dermed høyere tonehøyde — akkurat slik teorien forutsier. 
+På denne måten har vi erfart at numeriske metoder ikke bare er et verktøy for å finne løsninger, men også et middel for å styrke forståelsen av de fysiske prinsippene som ligger bak.
 
 \subsection{Har vi nådd målene våre?}
-\dots
+
+Ja, vi har nådd målene våre. Prosjektet har vist hvordan bølgeligningen kan beskrive bevegelsen til en streng med faste ender, og hvordan spennkraft, 
+massetetthet og lengde påvirker bølgefarten og tonehøyden. Den teoretiske utledningen og den numeriske simuleringen ga resultater som stemte godt overens, og bekreftet 
+sammenhengen $c^2 = T/\rho$. Vi har dermed oppnådd en helhetlig forståelse av både de matematiske og fysiske prinsippene bak bølgefenomener i strenger.
+
 

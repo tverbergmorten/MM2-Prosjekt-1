@@ -4,7 +4,7 @@ Den beskriver hvordan bølger forplanter seg i tid og rom, og opptrer i mange sa
 vibrasjoner i en streng eller en membran, til akustiske bølger i luft, seismiske bølger i jordskorpen 
 og elektromagnetiske bølger i vakuum. 
 
-I dette prosjektet tar vi utgangspunkt i den klassiske éndimensjonale bølgeligningen:
+I dette prosjektet blir det tatt utgangspunkt i den klassiske éndimensjonale bølgeligningen:
 
 \begin{equation}
     \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}
@@ -12,33 +12,36 @@ I dette prosjektet tar vi utgangspunkt i den klassiske éndimensjonale bølgelig
 \end{equation}
 
 der $u(x,t)$ beskriver utslaget til systemet, og $c$ er bølgefarten bestemt av materialparametere. 
-Vi viser hvordan ligningen kan utledes fra enkle fysiske prinsipper, og hvordan ulike rand- og 
+Det blir vist hvordan ligningen kan utledes fra enkle fysiske prinsipper, og hvordan ulike rand- og 
 initialbetingelser gir opphav til stående bølger og egenfrekvenser. 
 
-Videre undersøker vi hvordan løsningen oppfører seg under forskjellige forhold, blant annet hvordan 
-resonans oppstår når en streng utsettes for en periodisk ytre kraft, og hvordan energien i systemet 
-utvikler seg med eller uten demping. Resultatene vil bli både analytisk utledet og numerisk simulert, 
-og vi vil sammenligne teori med numeriske observasjoner. 
+Videre undersøkes det hvordan den éndimensjonale bølgeligningen kan brukes til å beskrive bevegelsen til 
+en streng med faste ender. Gjennom analytiske utledninger blir det funnet løsninger som viser hvordan strengen 
+svinger i bestemte mønstre, avhengig av dens fysiske parametere. Deretter implementerer vi en numerisk 
+simulering for å sammenligne den teoretiske løsningen med den beregnede bevegelsen. 
+På denne måten kan en vurdere hvor godt den analytiske modellen samsvarer med den numeriske 
+representasjonen av strengens svingninger.
 
 Formålet med rapporten er dermed å belyse bølgeligningens matematiske struktur, demonstrere sentrale 
 fysiske fenomener knyttet til bølger, og trekke paralleller til praktiske anvendelser. Rapporten er 
-bygd opp slik at vi først presenterer den teoretiske bakgrunnen og utledningen, deretter beskriver vi 
-numeriske metoder og simuleringer, før vi avslutter med resultater, diskusjon og konklusjon.
+bygd opp slik at vi først presenterer den teoretiske bakgrunnen og utledningen, deretter beskrives det 
+numeriske metoder og simuleringer, før det avsluttes med resultater, diskusjon og konklusjon.
 
 \subsection{Problemstilling og valg av tema}
 
-I denne oppgaven har vi valgt å fokusere på gitarstrengen som et konkret eksempel på
-bølgeligningen i praksis. Problemstillingen vi ønsker å undersøke er:
+I denne oppgaven er det blitt valgt å fokusere på gitarstrengen som et konkret eksempel på
+bølgeligningen i praksis. Problemstillingen som undersøkes i oppgaven er:
 
 \begin{center}
-    \textit{Hvordan kan strengens materiale, tykkelse og spennkraft modelleres i bølgeligningen, 
-    og hvilken betydning har disse faktorene for bølgefarten og dermed tonehøyden på en gitar?}
+    \textit{Hvordan kan bølgeligningen brukes til å beskrive bevegelsen til en streng med faste ender, 
+    og hvordan stemmer den analytiske løsningen overens med en numerisk simulering av strengens 
+    svingninger?}
 \end{center}
 
-Vi valgte denne problemstillingen fordi den kombinerer en fundamental matematisk modell 
-med et fysisk og praktisk fenomen som de fleste kan relatere til. En gitarstreng er et lettfattelig
+Denne problemstillingen ble valgt fordi den kombinerer en fundamental matematisk modell 
+med et fysisk og praktisk fenomen som de fleste kan relatere til. En gitarstreng er et enkelt
 eksempel på hvordan bølger oppfører seg, og hvordan små endringer i fysiske parametere kan gi 
-merkbare utslag i lyd og tonehøyde. Dermed får vi muligheten til både å fordype oss i 
+merkbare utslag i lyd og tonehøyde. Dermed åpner muligheten til både å fordype seg i 
 den matematiske utledningen og samtidig knytte teorien til en konkret anvendelse i musikk.
 
 Problemstillingen er interessant fordi den viser hvordan en enkel partielle differensialligning 
@@ -48,7 +51,7 @@ teori og praksis på en strukturert måte.
 
 \subsubsection*{Hvordan vi skal gå frem}
 
-Vi starter med den klassiske bølgeligningen, som beskriver utslaget $u(x,t)$ til en streng i rotnormal retning:
+En starter med den klassiske bølgeligningen, som beskriver utslaget $u(x,t)$ til en streng i rotnormal retning:
 
 \begin{equation*}
   \frac{\partial^2 u}{\partial t^2} = c^2 \frac{\partial^2 u}{\partial x^2}
@@ -63,18 +66,14 @@ Videre kobler vi bølgefarten $c$ til strengens fysiske parametere gjennom
 \end{equation}
 
 der $T$ er spennkraften i strengen og $\rho$ er materialets tetthet. 
-Tilnærmingen $\mu \approx \rho$ benyttes fordi strengen antas å ha jevn tetthet og liten variasjon i tverrsnitt, slik at massen per lengdeenhet kan betraktes som tilnærmet lik materialets egen tetthet.
-Som en løsning på bølgeligningen kan vi a ta en harmonisk bølge av formen
+Tilnærmingen $\mu \approx \rho$ benyttes fordi strengen antas å ha 
+jevn tetthet og liten variasjon i tverrsnitt, slik at massen per lengdeenhet kan betraktes som tilnærmet lik materialets egen tetthet.
+Som en løsning på bølgeligningen kan en ta fourier rekke av formen
 
 \begin{equation*}
-  u(x,t) = A \sin(kx - \omega t)
-\end{equation*}
-
-der $A$ er amplituden, $k=\tfrac{2\pi}{\lambda}$ er bølgetallet og $\omega = 2\pi f$ er vinkelfrekvensen.  
-Sammenhengen mellom $\omega$, $k$ og $c$ følger fra dispersjonsrelasjonen
-
-\begin{equation*}
-  \omega = c k
+    u(x,t) = \sum_{n=0}^{\infty} c_n 
+    \sin\!\left(\tfrac{n\pi x}{L}\right)
+    \cos\!\left(\tfrac{n\pi c}{L}t\right)
 \end{equation*}
 
 For en streng med lengde $L$ og faste ender ($u(0,t)=u(L,t)=0$) finner vi at egenfrekvensene blir
@@ -83,7 +82,7 @@ For en streng med lengde $L$ og faste ender ($u(0,t)=u(L,t)=0$) finner vi at ege
   f_n = \frac{n}{2L}\,c, \qquad n=1,2,3,\dots \label{egenfrekvensene}
 \end{equation*}
 
-Dermed kan vi analysere hvordan variasjon i $T$, $\rho$ og $A$ påvirker både grunnfrekvensen og de høyere overtonene.  
+Dermed kan en analysere hvordan variasjon i $T$, $\rho$ og $A$ påvirker både grunnfrekvensen og de høyere overtonene.  
 En vilkårlig strengutslag $u(x,0)$ kan videre uttrykkes som en sum av harmoniske svingninger ved hjelp av Fourier-rekker.  
 Den generelle løsningen for $u(x,t)$ kan da uttrykkes som en superposisjon av moduser 
 $\sin\!\left(\tfrac{n\pi x}{L}\right)$, der hver modus har en tidsavhengig del gitt ved 
@@ -100,11 +99,12 @@ Fourier-rekken gjør det mulig å beskrive komplekse bølgeformer som en sum av 
 Denne metoden gjør det mulig å uttrykke en strengs bevegelse som en superposisjon av mange enkeltsvingninger med ulike frekvenser og amplituder.  
 Ved å bruke denne representasjonen kan man analysere hvordan ulike fysiske faktorer, som spennkraft og tetthet, påvirker bølgefarten og tonehøyden på strengen \parencite{libretextsWave}
 
-Til slutt vil vi sammenligne de utledede teoretiske uttrykkene med numeriske simuleringer 
+Til slutt skal det sammenlignes av de utledede teoretiske uttrykkene med numeriske simuleringer 
 av bølgeligningen for representative parametere, for å bekrefte modellens gyldighet og illustrere praktiske effekter.
 
 \subsection{Hvordan kunstig intelligens er brukt i arbeidet med rapporten}
-I arbeidet med denne oppgaven har vi brukt kunstig intelligens som et supplement, hovedsakelig for å hjelpe med formatering, strukturering og oppsett i LaTeX. 
-Selve de matematiske utledningene og formlene har vi gjort på egen hånd, ofte først på papir, før vi har satt dem inn i rapporten. 
-Kunstig intelligens har derfor fungert som en støttespiller for å gjøre teksten mer oversiktlig og effektiv å presentere, men den faglige forståelsen, beregningene og drøftingene har vi selv stått for. 
-På denne måten har vi sikret at oppgaven gjenspeiler vår egen innsats og kunnskap, samtidig som vi har brukt verktøyet til å styrke klarheten og kvaliteten på framstillingen.
+I arbeidet med denne oppgaven har det blitt brukt kunstig intelligens som et supplement, hovedsakelig som en sparrepartner og hjelpeverktøy.
+Selve de matematiske utledningene og formlene er blitt gjort på egen hånd, ofte først på papir, før dette er satt inn i rapporten. 
+Kunstig intelligens har derfor fungert som et støtteverktøy for å gjøre teksten mer oversiktlig og effektiv å presentere. Men den faglige forståelsen, beregningene og drøftingene 
+er selv stått til ansvar for. På denne måten har det blitt sikret at oppgaven gjenspeiler egen innsats og kunnskap, samtidig som det er brukt 
+verktøyet til å styrke klarheten og kvaliteten på framstillingen.

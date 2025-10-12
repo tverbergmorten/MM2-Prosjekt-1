@@ -3,17 +3,17 @@
 \subsubsection{\texorpdfstring{$u(x,t)$}{u(x,t)}}
 $u(x,t)$ beskriver forskyvningen til et punkt på strengen ved posisjon $x$ og tidspunkt $t$. 
 For en streng representerer dette hvor langt punktet beveger seg i vertikal retning fra sin likevektsposisjon. 
-I utledningen av bølgeligningen fra Newtons 2.\ lov er $u(x,t)$ den størrelsen som beskriver bevegelsen til et lite strengsegment som påvirkes av strekkreftene i hver ende.
+I utledningen av bølgeligningen fra Newtons 2.\ lov er $u(x,t)$ den størrelsen som beskriver bevegelsen til et lite strengsegment som påvirkes av strekkreftene i hver ende \parencite{LamarVibratingString}.
 
 \subsubsection{Tid \texorpdfstring{$t$}{t}}
 Tiden $t$ angir øyeblikket vi observerer bølgen på. 
 Den er en kontinuerlig variabel som beskriver hvordan bevegelsen utvikler seg over tid. 
-Når vi løser bølgeligningen, viser variasjonen i $t$ hvordan energi og forskyvning forplanter seg gjennom systemet.
+Når vi løser bølgeligningen, viser variasjonen i $t$ hvordan energi og forskyvning forplanter seg gjennom systemet \parencite{LamarWaveEquationSection}.
 
 \subsubsection{Romkoordinatet \texorpdfstring{$x$}{x}}
 Koordinatet $x$ beskriver posisjonen langs strengen der bølgen brer seg. 
 Ved å holde $t$ konstant kan vi se hvordan utslaget varierer i rommet. 
-Dette gjør det mulig å beskrive bølgens form og fase langs strengen på et gitt tidspunkt.
+Dette gjør det mulig å beskrive bølgens form og fase langs strengen på et gitt tidspunkt \parencite{UBCWaveSeparation}.
 
 \subsubsection{Bølgefarten \texorpdfstring{$c$}{c}}
 Bølgefarten $c$ forteller hvor raskt en forstyrrelse brer seg langs strengen. 
@@ -21,7 +21,7 @@ Ut fra Newtons 2.\ lov for et lite strengsegment kan bølgefarten c uttrykkes so
 
 der $T$ er strekkraften i strengen og $\rho$ er massen per lengdeenhet. 
 En streng med høy spenning eller lav masse per lengde vil derfor ha høyere bølgefart. 
-Denne sammenhengen gjelder generelt for mekaniske bølger i strenger og kabler.
+Denne sammenhengen gjelder generelt for mekaniske bølger i strenger og kabler \parencite{LibreTextsWaveSpeed}.
 
 \subsubsection{Strekkraft \texorpdfstring{$T$}{T}}
 Strekkraften $T$ beskriver hvor stramt strengen er spent. 
@@ -30,10 +30,10 @@ Den virker langs strengens lengde og sørger for at bølgebevegelsen kan forplan
 Dette er grunnen til at en gitarstreng med høyere spenning gir en høyere tone, siden bølgefarten og dermed frekvensen øker. 
 \parencite{NTNUBolgelikning}
 
-\subsubsection{Masse per lengde \texorpdfstring{$\rho$}{rho}}
-$\rho$ er massen fordelt per lengdeenhet av strengen, målt i $\text{kg/m}$. 
+\subsubsection{Masse per volum \texorpdfstring{$\rho$}{rho}}
+$\rho$ er massen fordelt per lengdeenhet av strengen, målt i $\text{kg/m³}$. 
 En større $\rho$ betyr at strengen er tyngre og vanskeligere å sette i bevegelse, slik at bølgefarten blir lavere. 
-Tynne og lette strenger vibrerer raskere og produserer derfor høyere toner enn tykke og tunge strenger.
+Tynne og lette strenger vibrerer raskere og produserer derfor høyere toner enn tykke og tunge strenger \parencite{UCFStringLinearDensity}.
 
 \subsection{Fourierrekker og halvperiodiske utvidelser}
 
@@ -87,8 +87,35 @@ Den tilhørende romlige egenfunksjonen er
 X_n(x) = \sin\left(\frac{n\pi x}{L}\right)
 \end{equation*}
 
-Den første modusen ($n=1$) kalles \textit{grunnfrekvensen}, mens høyere $n$ gir overtoner eller harmoniske frekvenser.  
+Den første modusen ($n=1$) kalles \textit{grunnfrekvensen}, høyere $n$ gir overtoner eller harmoniske frekvenser.  
 Disse danner grunnlaget for klangen i musikkinstrumenter og for Fourier-representasjonen av bølgeløsningen \parencite{physicsClassroomFundamental}
+
+\subsection{Utledning av egenfrekvenser}
+For en streng som er festet i to punkter er hastigheten $c$ gitt ved:
+
+\begin{equation*}
+    c = \sqrt{\frac{T}{\mu}}
+\end{equation*}
+Hvor $T$ er spenningen i strengen og $\mu$ er massetettheten, og forholdet mellom hastighet
+($c$), frekvens ($f$) og bølgelengde ($\lambda$) er gitt ved
+
+\begin{equation*}
+    c = f \lambda
+\end{equation*}  
+
+Når strengen er festet i begge ender, kan den bare svinge i bestemte mønstre, kalt normalmoduser.
+Den enkleste normalmodusen er grunnmodusen, som har en bølgelengde som er dobbelt så lang som strengen:
+
+\begin{equation*}
+    \lambda_1 = 2L
+\end{equation*}
+Hvor $L$ er lengden på strengen.
+Frekvensen til grunnmodusen kan dermed uttrykkes som:
+
+\begin{equation*}
+    f_1 = \frac{c}{\lambda} = \frac{1}{2L} \sqrt{\frac{T}{\mu}}
+\end{equation*}
+Dette er Mersenne's likning.
 
 \subsection{Stående og løpende bølger}
 
@@ -99,16 +126,24 @@ En løpende bølge har formen
 u(x,t) = f(x - ct) + g(x + ct)
 \end{equation*}
 
-der $f$ og $g$ beskriver bølger som beveger seg i motsatt retning med fart $v$.  
+der $f$ og $g$ beskriver bølger som beveger seg i motsatt retning med fart $c$.  
 Når to slike bølger interfererer, kan de danne et mønster som ikke forplanter seg, men oscillerer lokalt — dette kalles en \textit{stående bølge}.  
 
 For en streng med faste endepunkter oppstår stående bølger når bølgelengden tilfredsstiller betingelsen
 
 \begin{equation*}
-\lambda_n = \frac{2L}{n}
+\lambda_n = \frac{2L}{n}, \quad n = 1, 2, 3, \dots
 \end{equation*}
 
-Stående bølger er derfor direkte knyttet til strengens egenfrekvenser, og bestemmer hvor bølgetopper (antinoder) og nullpunkter (noder) oppstår langs strengen \parencite{libretextsStandingWaves}.
+som betyr at strengen bare kan svinge i bestemte \textit{normalmoduser}.  
+Disse gir opphav til de karakteristiske egenfrekvensene
+
+\begin{equation*}
+f_n = \frac{n c}{2L},
+\end{equation*}
+
+der $L$ er strengens lengde.  
+Fenomenet med stående bølger forklarer hvorfor musikkinstrumenter som gitarer og fioliner kan produsere toner med bestemte frekvenser — det er et resultat av interferens mellom bølger som reflekteres ved strengens ender \parencite{libretextsStandingWaves}.
 
 \subsection{Resonans}
 
@@ -118,6 +153,10 @@ Dette er grunnlaget for lydforsterkning i musikkinstrumenter, der strengens natu
 
 Matematisk kan resonans betraktes som at en tvungen løsning av bølgeligningen får maksimal amplitude når den påtrykte frekvensen $\omega$ er lik $\omega_n$ for en egenmodus.  
 Fenomenet er sentralt i fysikk og ingeniørfag fordi det kan føre til både ønskede og uønskede svingninger \parencite{libretextsStringResonance}.
+
+I dette prosjektet har det ikke blitt inkludert resonans som en del av den matematiske modellen, ettersom strengens bevegelse studeres over et kort tidsintervall uten ytre periodisk pådriv.
+Effekten av resonans blir først merkbar ved langvarig eller tvungen svingning, og har derfor lite utslag i simuleringene i denne rapporten.
+Likevel er fenomenet tatt med her for å vise forståelse for hvordan resonans henger sammen med egenfrekvensene som er sentrale i bølgeløsningen.
 
 \subsection{Demping}
 
@@ -132,6 +171,10 @@ En enkel modell for dempet bølgebevegelse kan uttrykkes som
 der $\beta$ beskriver dempningskonstanten.  
 Når $\beta = 0$ får vi den ideelle, tapsfrie bølgeligningen, mens $\beta > 0$ fører til at energien gradvis avtar.  
 Demping påvirker hvor lenge svingninger varer, og spiller en viktig rolle i akustikk, bygg og elektronikk \parencite{libretextsDamping}.
+
+Demping er utelatt fra den implementerte modellen fordi tidsrommet som blir simulert er så kort at energitapet er lite relevant.
+En dempningsterm ville hovedsakelig påvirket hvor raskt amplituden avtar over tid, ikke selve bølgens form i starten av bevegelsen.
+det blir likevel inkludert en omtale av fenomenet for å vise forståelse av hvordan virkelige systemer skiller seg fra den ideelle, tapsfrie bølgeligningen.
 
 \subsection{Dispersjon}
 
@@ -152,4 +195,8 @@ Den fysiske årsaken ligger i strengens stivhet, som legger til et ekstra ledd i
 der $\kappa$ er en konstant som beskriver strengens stivhet.  
 Dette leddet gjør at bølgefarten ikke lenger er konstant, men øker svakt med frekvensen.  
 Dispersjon i gitarstrenger er derfor en praktisk påminnelse om hvordan virkelige materialer avviker fra den ideelle matematiske modellen — og hvordan dette påvirker instrumentets klang og stemning \parencite{kartofelev2019dispersive, unswStringsHarmonics, wikipediaInharmonicity}.
+
+Dispersjon er ikke en del av modellen fordi det blir tatt utgangspunkt i den klassiske bølgeligningen, som antar en ideell, fleksibel streng uten stivhet.
+Innenfor dette rammeverket er bølgefarten konstant og uavhengig av frekvens.
+Det blir likevel nevt dispersjon for å understreke hvordan virkelige gitarstrenger avviker fra den ideelle modellen, og for å vise sammenhengen mellom matematisk teori og praktiske observasjoner av lyd og klang.
 
