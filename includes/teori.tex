@@ -40,6 +40,7 @@ Tynne og lette strenger vibrerer raskere og produserer derfor høyere toner enn 
 En streng som settes i bevegelse, kan beskrives som en superposisjon av mange enkle svingninger.  
 Hver svingning har sin egen frekvens og amplitude, og summen av disse danner den totale bevegelsen.  
 Dette kan matematisk uttrykkes som en \textit{Fourierrekke}, som er et av de mest sentrale verktøyene for å analysere og løse bølgeligningen.  
+\clearpage
 
 Ideen bak Fourier-representasjonen er at selv et komplisert utslag på strengen, for eksempel et tilfeldig startbøyningsmønster, kan deles opp i en sum av sinus- og cosinusfunksjoner.  
 På den måten kan man løse bølgeligningen for hver enkelt harmonisk komponent, og deretter summere løsningene for å finne den totale bevegelsen.  
@@ -47,7 +48,7 @@ På den måten kan man løse bølgeligningen for hver enkelt harmonisk komponent
 Selv om Fourier-rekker vanligvis brukes for periodiske fenomener, kan de også brukes når funksjonen er definert på et begrenset intervall, for eksempel $x \in [0,L]$.  
 Da utvider man funksjonen \textit{halvperiodisk}, slik at intervallet $[0,L]$ betraktes som en halvperiode av en større periodisk funksjon.  
 Dette er spesielt nyttig for strenger som er festet i begge ender, siden utslaget der må være null.  
-En slik funksjon er derfor \textit{odde} (antisymmetrisk), og beskrives med en ren sinusrekke. \parencite{intmathHalfRange}
+En slik funksjon er derfor \textit{odde} (antisymmetrisk), og beskrives med en ren sinusrekke. \parencite{intmathHalfRange} 
 
 Fourierrekken for en slik odde, halvperiodisk funksjon $f(x)$ definert på intervallet $[0,L]$ blir da
 
@@ -70,7 +71,7 @@ u(x,t) = \sum_{n=1}^{\infty} \left[a_n \cos(\omega_n t) + b_n \sin(\omega_n t)\r
 \end{equation*}
 
 der $\omega_n = \frac{n\pi c}{L}$ er egenfrekvensene som bestemmes av bølgefarten $c$ og strengens lengde $L$.
-
+\clearpage
 \subsection{Egenfrekvens og egenmoduser}
 
 Når en streng svinger, skjer dette kun ved bestemte frekvenser som tilfredsstiller randbetingelsene $u(0,t)=u(L,t)=0$.  
@@ -104,7 +105,7 @@ Hvor $T$ er spenningen i strengen og $\mu$ er massetettheten, og forholdet mello
 \end{equation*}  
 
 Når strengen er festet i begge ender, kan den bare svinge i bestemte mønstre, kalt normalmoduser.
-Den enkleste normalmodusen er grunnmodusen, som har en bølgelengde som er dobbelt så lang som strengen:
+Den enkleste normalmodusen er grunnmodusen, der bølgelengden er det dobbelte av strengen:
 
 \begin{equation*}
     \lambda_1 = 2L
@@ -115,7 +116,7 @@ Frekvensen til grunnmodusen kan dermed uttrykkes som:
 \begin{equation*}
     f_1 = \frac{c}{\lambda} = \frac{1}{2L} \sqrt{\frac{T}{\mu}}
 \end{equation*}
-Dette er Mersenne's likning.
+Dette er Mersenne's likning. \parencite{MersennesLaws}
 
 \subsection{Stående og løpende bølger}
 
@@ -195,7 +196,7 @@ Den fysiske årsaken ligger i strengens stivhet, som legger til et ekstra ledd i
 der $\kappa$ er en konstant som beskriver strengens stivhet.  
 Dette leddet gjør at bølgefarten ikke lenger er konstant, men øker svakt med frekvensen.  
 Dispersjon i gitarstrenger er derfor en praktisk påminnelse om hvordan virkelige materialer avviker fra den ideelle matematiske modellen — og hvordan dette påvirker instrumentets klang og stemning \parencite{kartofelev2019dispersive, unswStringsHarmonics, wikipediaInharmonicity}.
-
+\clearpage
 Dispersjon er ikke en del av modellen fordi det blir tatt utgangspunkt i den klassiske bølgeligningen, som antar en ideell, fleksibel streng uten stivhet.
 Innenfor dette rammeverket er bølgefarten konstant og uavhengig av frekvens.
 Det blir likevel nevt dispersjon for å understreke hvordan virkelige gitarstrenger avviker fra den ideelle modellen, og for å vise sammenhengen mellom matematisk teori og praktiske observasjoner av lyd og klang.

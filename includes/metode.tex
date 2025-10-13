@@ -1,16 +1,16 @@
 \subsection{Utledning av bølgeligningen}
 \subsubsection{Forhåndsbetingelser}
-For å finne frem til bølgeligningen må en se på hvordan systemet en skal bruke likningen i ser ut.
-På en gitar er lengden på strengen justerbar, men en endrer tonen ved å stramme eller slakke
-på gitarstrengen.
+For å finne frem til bølgeligningen må man analysere systemet som likningen skal brukes på.
+På en gitarstreng er lengden justerbar, men tonen endres primært ved å stramme eller slakke
+strengen.
 
-En gitarstreng kan modelleres som en tråd som er spent mellom to punkter, der den er fiksert på plass.
-I normaltilstand ligger strengen spent i en rett linje mellom punktene, frem til den blir plukket. Da
-har den blitt forstyrret, og strengen begynner å vibrere. Problemet er da å finne en \(u(x,t)\) som modellerer
-defleksjonen til strengen. Hvis strengen har lengde \(l\), massetetthet \(\rho\) og blir sluppet løs ved \(t=0\),
-vil formelen finne defleksjonen til strengen for hvilken som helst \(x\) når \(t>0\).
+En gitarstreng modelleres som en tråd som er spent mellom to punkter, der den er fiksert på plass.
+I normaltilstand ligger strengen stram i en rett linje mellom punktene, frem til den plukkes. Da
+forstyrres likevekten, og strengen begynner å vibrere. Problemet er da å finne en $u(x,t)$ som modellerer
+defleksjonen til strengen. Hvis strengen har lengde $l$, massetetthet $\rho$ og slippes ved $t=0$,
+vil modellen beskrive defleksjonen $u(x,t)$ for vilkårlig $x$ når $t>0$.
 
-Forutsetninger for løsning av bølgelikningen:
+Forutsetninger for løsning av bølgeligningen:
 
 \begin{enumerate}
   \item Gravitasjon er neglisjerbar i forhold til strengspenningen.
@@ -18,7 +18,7 @@ Forutsetninger for løsning av bølgelikningen:
   \item Massen per lengde er konstant over hele strengen, slik at spenningen er den samme
   gjennom hele strengen.
 \end{enumerate}
-
+\clearpage
 \subsubsection{Utledning}
 
 \begin{figure}[H]
@@ -69,14 +69,14 @@ Forutsetninger for løsning av bølgelikningen:
 
     \end{axis}
     \end{tikzpicture}
-  \caption{Krefter og vinkler på et lite strengstykke \([x,\,x+\Delta x]\).}
+  \caption{Krefter og vinkler på et lite strengstykke $[x,\,x+\Delta x]$.}
 \end{figure}
 
-For å finne uikningen brukes en liten bit av strengen ved \(t=0\), som er \(\Delta x\) lang og starter på
-\(x\). Punktet \(P=(x,u(x,0))\) og punktet \(Q=(x+\Delta x, u(x+\Delta x,0))\) er endene av strengstykket på strengen.
-\(T\) er kraften som spenningen i strengen skaper på ett punkt \(x>0\) langs strengen. 
-\(\alpha\) er vinkelen mellom \(T_{Qx}\) og \(T_Q\), og \(\beta\) er vinkelen mellom
-\(T_{Px}\) og \(T_P\).
+For å finne likningen betraktes et lite stykke av strengen ved $t=0$, med lengde $\Delta x$ og start i
+$x$. Punktet $P=(x,u(x,0))$ og punktet $Q=(x+\Delta x, u(x+\Delta x,0))$ er endene av strengstykket.
+$T$ er kraften som spenningen i strengen skaper i et punkt $x>0$ langs strengen. 
+$\alpha$ er vinkelen mellom $T_{Qx}$ og $T_Q$, og $\beta$ er vinkelen mellom
+$T_{Px}$ og $T_P$.
 
 \begin{align*}
   T_{Px} = T_P \cos\beta, &\qquad T_{Qx} = T_Q \cos\alpha,\\
@@ -84,23 +84,22 @@ For å finne uikningen brukes en liten bit av strengen ved \(t=0\), som er \(\De
 \end{align*}
 
 Fordi spenningen i strengen er lik over hele strengen, vil de horisontale kreftene
-av \(T_Q\) og \(T_P\) utjevne hverandre:
+av $T_Q$ og $T_P$ utjevne hverandre:
 
 \begin{equation}
   T_{Px} = T_{Qx} = T = \text{const.}
   \label{eq:horisontaleKrefterKonstant}
 \end{equation}
 
-Ifølge Newtons andre lov \((F=ma)\) sett på strengstykket, kan massen settes lik\(m=\rho\,\Delta x\) og
-aksellerasjonen \(a=u_{tt}\). Kraften som blir påført strengen er \(F=T_{Qu}-T_{Pu}\). Da blir stykket slik:
+Ifølge Newtons andre lov $(F=ma)$ for strengstykket settes massen lik $m=\rho\,\Delta x$ og
+akselerasjonen $a=u_{tt}$. Kraften som virker på strengen er $F=T_{Qu}-T_{Pu}$. Da får vi:
 
 \begin{equation*}
   T_{Qu}-T_{Pu}=\rho\,\Delta x\,\frac{\partial^2 u}{\partial t^2}.
 \end{equation*}
 
-Deretter kan \(\tan\theta=\frac{\sin\theta}{\cos\theta}\) og \eqref{eq:horisontaleKrefterKonstant} settes sammen, samtidig
-antas \(\tan\alpha\) og \(\tan\beta\) til å være minimal, slik at en kan bruke forenklinger. De antas små fordi
-i forutsetningene for bølgelikningen blir alle defleksjoner satt til å være små. 
+Videre brukes $\tan\theta=\frac{\sin\theta}{\cos\theta}$ sammen med \eqref{eq:horisontaleKrefterKonstant}, og
+$\tan\alpha$ og $\tan\beta$ antas små (små defleksjoner), slik at forenklinger kan benyttes: 
 
 \begin{equation}
   \frac{T_{Qu}}{T_{Qx}}-\frac{T_{Pu}}{T_{Px}}
@@ -109,8 +108,8 @@ i forutsetningene for bølgelikningen blir alle defleksjoner satt til å være s
   = \frac{\rho\,\Delta x}{T}\,\frac{\partial^2 u}{\partial t^2}.
   \label{eq:krefterPaStykke}
 \end{equation}
-
-Gange begge sider med \(\dfrac{T}{\rho\,\Delta x}\):
+\clearpage
+Ganger man begge sider med $\dfrac{T}{\rho\,\Delta x}$:
 
 \begin{equation}
   \frac{\partial^2 u}{\partial t^2}
@@ -120,7 +119,7 @@ Gange begge sider med \(\dfrac{T}{\rho\,\Delta x}\):
   \label{eq:tidPartiellDerivert}
 \end{equation}
 
-Settes \(\Delta x\to 0\) som en grenseverdi, kommer definisjonen av den deriverte frem:
+Setter man $\Delta x\to 0$ som grenseverdi, fremkommer definisjonen av den deriverte:
 
 \begin{equation}
   \frac{\partial^2 u}{\partial t^2}
@@ -130,7 +129,7 @@ Settes \(\Delta x\to 0\) som en grenseverdi, kommer definisjonen av den derivert
   \label{eq:deltaXGarMotNull}
 \end{equation}
 
-Settes \(c^2=\dfrac{T}{\rho}\) kommer bølgelikningen frem: 
+Setter man $c^2=\dfrac{T}{\rho}$ får vi bølgeligningen: 
 
 \begin{equation}
   \frac{\partial^2 u}{\partial t^2}
@@ -142,13 +141,15 @@ Settes \(c^2=\dfrac{T}{\rho}\) kommer bølgelikningen frem:
 
 \subsection{Metode og verktøy for numerisk løsning}
 \subsubsection{Valg av verktøy}
-For å løse bølgelikningen numerisk, har vi valgt å bruke Python. Dette er et programmeringsspråk som er mye brukt innenfor vitenskapelige
-beregninger, og har et stort utvalg av biblioteker som gjør det enkelt å implementere numeriske metoder og visualisere resultater. Innenfor 
-bibliotekene numpy og matplotlib finnes det mange funksjoner som gjør det enkelt å løse oppgaver numerisk og plotte visuelle fremstillinger.
-Dette gjør Python til et godt valg for å løse bølgelikningen numerisk. For å lage animasjoner av resultatene, har vi valgt å bruke biblioteket 
-matplotlib.animation, som er en del av matplotlib-biblioteket. Dette lar brukeren få en bedre forståelse av hvordan løsningen utvikler seg over tid.
-For å plotte grafen har vi brukt matplotlib.pyplot, som er et vanlig grafikkbibliotek i Python. Dette biblioteket gjør det enkelt å lage 2D-grafer og 
-visualisere data. For å forstå komplekse lignigner som bølgeligningen er essensielt å kunne visualisere resultatene på en enkel måte.
+For å løse bølgeligningen numerisk har vi valgt å bruke Python. Språket er mye brukt innen
+vitenskapelige beregninger og har et stort økosystem av biblioteker som forenkler implementasjon av
+numeriske metoder og visualisering av resultater. Innenfor bibliotekene \texttt{NumPy} og \texttt{Matplotlib}
+finnes funksjonalitet som gjør det enkelt å løse oppgaver numerisk og fremstille resultatene grafisk.
+Dette gjør Python til et velegnet valg for denne problemstillingen. For animasjoner av resultatene bruker
+vi \texttt{matplotlib.animation} (en del av \texttt{Matplotlib}); dette gir en mer intuitiv forståelse av
+hvordan løsningen utvikler seg over tid. Til 2D-grafer benyttes \texttt{matplotlib.pyplot}. For å forstå
+komplekse ligninger som bølgeligningen er det nyttig å kunne visualisere resultatene på en enkel og
+konsis måte.
 
 \subsection{Løsning med separasjon av variable}
 \begin{equation}
@@ -157,11 +158,10 @@ visualisere data. For å forstå komplekse lignigner som bølgeligningen er esse
 	\label{eq:bølgelikningForLøsning}
 \end{equation}
 
-En løsning av bølgeligningen forutsetter definerte rand- og initialbetingelser. Strengen har en fast lengde $l$,
-og er festet i begge ender, dette er randbetingelsene. Initialbetingelsene skjer ved $t=0$, og da blir strengen
-sluppet løs av en kraft, som har påvirket strengen til å slippes fra en posisjon bestemt av $f(x)$.
-Ettersom strengen blir sluppet, er den partiellderiverte av $t$ ved $t=0$ $u_t(x,0) = 0$.
-
+En løsning av bølgeligningen forutsetter definerte rand- og initialbetingelser. Strengen har fast lengde $l$
+og er festet i begge ender; dette er randbetingelsene. Initialbetingelsene gjelder ved $t=0$, hvor strengen
+slippes fra en posisjon bestemt av $f(x)$. Ettersom strengen slippes, settes $u_t(x,0) = 0$.
+\clearpage
 Grensebetingelsene for funksjonen $u(x,t)$ blir derfor:
 
 \begin{align}
@@ -172,25 +172,25 @@ Grensebetingelsene for funksjonen $u(x,t)$ blir derfor:
 og initialbetingelsene for funksjonen $u(x,t)$ blir:
 
 \begin{align}
-	u(x , o) &= f(x) = \sum_{n=0}^{n=\infty} c_n \sin \left( \frac{n \pi}{l} x \right) 	
+	u(x , 0) &= f(x) = \sum_{n=0}^{n=\infty} c_n \sin \left( \frac{n \pi}{l} x \right) 	
 	\label{eq:initialbetingelse1}
 \end{align}
 
-Separasjon av variabler går ut på å finne to funksjoner $F(x)$ og $G(t)$, der de tilsammen blir $u(x , t)$. 
-Da får vi separert tid $t$ og posisjon $x$ i to ulike funksjoner.
+Separasjon av variabler går ut på å finne to funksjoner $F(x)$ og $G(t)$ slik at $u(x , t)=F(x)G(t)$.
+Da separeres tid $t$ og posisjon $x$ i to ulike funksjoner.
 
 \begin{equation*}
 	u(x , t) = F(x)G(t)
 \end{equation*}
 
-De partiellderiverte av $F(x)$ og $G(t)$ vil derfor bli slik:
+De partiellderiverte av $F(x)$ og $G(t)$ blir:
 
 \begin{equation}
 	u_{tt} = F(x)G''(t), \qquad u_{xx} = F''(x)G(x)
 	\label{eq:separasjonPartiellDeriverte}	
 \end{equation}
 
-Fyller vi de partiellderiverte (\ref{eq:separasjonPartiellDeriverte}) inn i bølgelikningen (\ref{eq:bølgelikningForLøsning}):
+Setter vi \eqref{eq:separasjonPartiellDeriverte} inn i \eqref{eq:bølgelikningForLøsning}:
 
 \begin{align*}
   \hspace{35ex}
@@ -200,26 +200,23 @@ Fyller vi de partiellderiverte (\ref{eq:separasjonPartiellDeriverte}) inn i bøl
   \frac{F''(x)}{F(x)} &= \frac{1}{c^2} \frac{G''(t)}{G(t)}
 \end{align*}
 
-For at begge sider skal være like for alle verdier av $x \in \left[ 0 , l \right]$ og $t < 0$, må siste 
-likningen være lik en konstant verdi. Denne verdien settes til $- \lambda^2$. Den må være negativ for 
-at det skal bli et sinus og cosinus svar, og ikke et eksponentiellt svar. For å vise at konstanten alltid 
-er positiv, er den opphøyd i andre.
-Det kan skrives slik:
+For at begge sider skal være like for alle $x \in \left[ 0 , l \right]$ og $t < 0$ må uttrykket være lik en
+konstant. Denne settes til $- \lambda^2$. Den velges negativ for å gi sinus- og cosinusløsninger (ikke
+eksponentielle). Med kvadrert parameter sikres positivitet:
 
 \begin{equation*}
 	\frac{F''(x)}{F(x)} = \frac{1}{C^2} \frac{G''(t)}{G(t)} = - \lambda^2
 \end{equation*}
-
-$F(x)$ og $G(t)$ er blitt to ulike differensiallikninger som kan løses. Vi starter med $F(x)$ for der
-kan grensebetingelsene (\ref{eq:grensebetingelse0}) og (\ref{eq:grensebetingelsel}) brukes for 
-løsningen.
+\clearpage
+$F(x)$ og $G(t)$ er dermed to differensiallikninger som kan løses. Med $F(x)$, og
+grensebetingelsene (\ref{eq:grensebetingelse0}) og (\ref{eq:grensebetingelsel}) blir første differensialligning mulig å løse:
 
 \begin{align*}
 	\hspace{20ex} \frac{F''(x)}{F(x)} &= - \lambda^2 \hspace{10ex} \vert \cdot F(x)\\
 	F''(x) + \lambda^2&F(x) = 0
 \end{align*}
 
-Løses dette som en 2. ordens homogen differensiallikning blir stykket slik:
+Løses dette som en 2.\ ordens homogen differensiallikning blir resultatet:
 
 \begin{align*}
 	F''(x) + \lambda^2&F(x) = 0 \\ 
@@ -229,7 +226,7 @@ Løses dette som en 2. ordens homogen differensiallikning blir stykket slik:
 	\Rightarrow F(x) = \alpha \cos& \lambda x + \beta \sin \lambda x 
 \end{align*}
 
-Da kan grensebetingelse (\ref{eq:grensebetingelse0}) settes inn i likningen:
+Settes grensebetingelse (\ref{eq:grensebetingelse0}) inn:
 
 \begin{align*}
 	u(0 , t) = F(&0)G(t) = 0\\
@@ -240,7 +237,7 @@ Da kan grensebetingelse (\ref{eq:grensebetingelse0}) settes inn i likningen:
 	\Rightarrow F(x) = &\beta \sin \lambda x
 \end{align*}
 
-Videre kan grensebetingelse (\ref{eq:grensebetingelsel}) settes inn for å finne verdien til $\lambda$.
+Videre brukes grensebetingelse (\ref{eq:grensebetingelsel}) for å finne $\lambda$:
 
 \begin{align*}
 	u(l ,t) = F(l&)G(t) = 0 \\
@@ -250,14 +247,14 @@ Videre kan grensebetingelse (\ref{eq:grensebetingelsel}) settes inn for å finne
 	\Rightarrow F(x) = { \beta }_n & \sin \frac{\pi n}{l} x
 \end{align*}
 
-Nå er uttrukket for $\lambda$ og $F(x)$ funnet, og neste seg er å finne uttrykket for $G(t)$:
+Nå er uttrykket for $\lambda$ og $F(x)$ funnet; neste steg er å finne $G(t)$:
 
 \begin{align*}
 	G''(t) = - \lambda^2 & c^2 G(t) \\
 	\Rightarrow G''(t) + \lambda^2 & c^2 G(t) = 0 
 \end{align*}
 
-Deretter løses dette som en 2. ordens homogen differensiallikning.
+Dette løses som en 2.\ ordens homogen differensiallikning:
 
 \begin{align*}
 	G''(t) + \lambda^2 & c^2 G(t) = 0 \\
@@ -267,15 +264,14 @@ Deretter løses dette som en 2. ordens homogen differensiallikning.
 	\Rightarrow G(t) = \gamma\cos & c \lambda t + \psi \sin c \lambda t
 \end{align*}
 
-Ettesom at strengen slippes fra startposisjonen som initialbetingelse (\ref{eq:initialbetingelse1})
-bestemmer, er startfarten til strengen i høyderetning $u_t(x,0) = 0$. Ettersom det er $ \psi \sin c \lambda t $
-som beskriver startfarten, blir dette satt lik $0$, og $G(t)$ blir slik:
+Ettersom strengen slippes fra startposisjonen bestemt av (\ref{eq:initialbetingelse1}) og startfarten settes til $u_t(x,0)=0$,
+blir $\psi=0$, og $G(t)$ reduseres til:
 
 \begin{equation*}
 	G(t) = \gamma \cos c \lambda t = \gamma \cos \frac{c \pi n}{l} t
 \end{equation*}
 
-Settes uttrykkene for $F(x)$ og $G(t)$ sammen, blir løsningen til bølgelikningen slik:
+Settes sammen $F(x)$ og $G(t)$, blir løsningen:
 
 \begin{equation}
 	u(x,t) = \sum_{n=0}^{\infty} c_n 
@@ -286,8 +282,8 @@ Settes uttrykkene for $F(x)$ og $G(t)$ sammen, blir løsningen til bølgelikning
 
 \subsubsection{Konstanten \texorpdfstring{$c_n$}{cn}}
 
-Konstanten $c_n$ beskriver initialbetingelsene en løser bølgelikningen for. For en streng med lengde
-$l$ av funksjonen $f(x)$ beskriver slik $u(x,0) = f(x)$, blir konstanten $c_n$ slik:
+Konstanten $c_n$ beskriver initialbetingelsene. For en streng med lengde
+$l$ og initialform $f(x)$ (slik at $u(x,0)=f(x)$) blir:
 
 \begin{equation}
 	c_n = \frac{2}{l} \int_{0}^{l} f(x) \sin \left( \frac{n \pi}{l} x \right) \,dx
@@ -296,49 +292,59 @@ $l$ av funksjonen $f(x)$ beskriver slik $u(x,0) = f(x)$, blir konstanten $c_n$ s
 
 \subsubsection{Beskrivelse av maple kode}
 
-Maple koden starter med å definere initialbetingelsene for simuleringen Strengen er $l = 64,77cm$ lang, og blir dratt
-opp i punkt $x = a = 7cm$ til høyde $u(a,0) = h = 2cm$. For å finne tettheten til gitarstrengene er 
-formelen $\rho = 7825 kg/m^3 \cdot \pi (0.00256 \cdot string\_gauge /2)^2$. Strengtykkelsene er hentet fra tykkelsen til
-Earnie Ball sine super slinky strengsett \parencite{ErnieBallSlinky}, og $7825 kg/m^3$ er massetetthet 
-for stål ifølge wikipedia \parencite{WikipediaTetthet}, da det blir antatt at alle strengene 
-er stålstrenger. Ved beregning av spenningskraft ble en streng-spennings-kalkulator-nettside 
-\parencite{RodrigoStringTensionCalc} brukt, og ``0.009 D'Addario / Ernie Bal''  ble valgt som strenger på 
-nettsiden. Deretter blir funksjonene for $f(x)$, $c_n$, og $u(x,t)$ definert, og en \verb|explore| og
-\verb|plot| blir brukt for å plotte alle strengene på en graf, der en kan styre $t$ med en glider.
-Ettersom det ikke var mulig å få inn navnet på de ulike strengene i plottet blir det vanskelig å 
-skille de ulike strengene fra hverandre.
+Maple-koden starter med å definere initialbetingelsene for simuleringen. Strengen er $l = 64{,}77\,\text{cm}$ lang og dras
+opp i punkt $x = a = 7\,\text{cm}$ til høyde $u(a,0) = h = 2\,\text{cm}$. For å estimere tettheten til gitarstrenger brukes 
+formelen $\rho = 7825\,\text{kg/m}^3 \cdot \pi (0.00256 \cdot \texttt{string\_gauge} /2)^2$. Strengtykkelsene er hentet fra
+Ernie Ball Super Slinky \parencite{ErnieBallSlinky}, og $7825\,\text{kg/m}^3$ er massetetthet for stål ifølge Wikipedia \parencite{WikipediaTetthet},
+idet det antas at alle strengene er stålstrenger. Ved beregning av strengspenning ble en strengspenningskalkulator brukt
+\parencite{RodrigoStringTensionCalc}, med valg «0.009 D'Addario / Ernie Ball». Deretter defineres $f(x)$, $c_n$ og $u(x,t)$,
+og \verb|explore| samt \verb|plot| benyttes for å visualisere alle strengene i én graf, der $t$ styres med en glider.
+Det var ikke trivielt å legge inn strengenes navn i plottet, noe som gjør det vanskelig å skille kurvene. Under følger en tabell
+med strengtykkelser, massetetthet, strengspenning og $c$-verdi. Koden fra maple kan hentes her: \parencite{mapleKode}
+
+\begin{table}[!h]
+	\centering
+	\begin{tabular}{|c|c|c|c|c|}
+		\hline
+		Streng & strengtykkelse & massetetthet, $\rho$ & strengspenning, $T$ & $c$-verdienre \\  
+		\hline
+		E4 & $0.009''$ & $3,26 mg/m$ & $58,49N$ & $4,24 km/s$ \\	
+		B3 & $0.011''$ & $4,87 mg/m$ & $47.99N$ & $3,14 km/s$ \\
+		G3 & $0.016''$ & $10,3 mg/m$ & $65,29N$ & $2,51 km/s$ \\
+		D3 & $0.024''$ & $23,2 mg/m$ & $69,62N$ & $1,61 km/s$ \\
+		A2 & $0.032''$ & $41,2 mg/m$ & $70,09N$ & $1,30 km/s$ \\
+		E2 & $0.042''$ & $71,0 mg/m$ & $65,06N$ & $1,16 km/s$ \\
+		\hline
+	\end{tabular}
+	\caption{Tabell over gitarstrenger og deres respektive fysiske verdier}
+	\label{tab:listeOverGitarstrenger}
+\end{table}
 
 \subsection{Beskrivelse av kode for numerisk løsning}
 \subsubsection{Pakker, variabler og parametere}
-I dette delkapittelet skal vi se på en numerisk tilnærming til bølgeligningen, koden for simuleringen kan hentes fra 
-følgende kilde: \parencite{simuleringKode}. 
+I dette delkapittelet beskrives en numerisk tilnærming til bølgeligningen (koden kan hentes fra 
+\parencite{simuleringKode}). 
 
-Først importeres nødvendige pakker for å kunne utføre numeriske beregninger og plotte grafiske fremstillinger. Her
-tar vi i bruk numpy for numeriske operasjoner, matplotlib.pyplot for plotting, og matplotlib.animation for å lage 
-animasjoner slik som forklart i forrige seksjon. Deretter setter vi konfigurajsonsparametere som definerer
-fysiske egenskaper til strengen, samt parametere for den numeriske løsningen. Dette inkluderer lengden $L$ på strengen,
-bølgehastigheten $c$ og tiden $s$ vi ønsker å simulere. Videre defineres antall punkter $N$ som skal brukes til å dele 
-opp strengen. Dette påvirker nøyaktigheten til den numeriske løsningen, der flere punkter gir en mer nøyaktig løsning,
-men øker beregningstid og ressursbruk. Videre definerer vi modi for funksjonen, som er antall bølgetopper som skal være 
-tilstede for å lage startformen, hvor en høyere verdi gir skarpere kanter og høyere detaljnivå. 
+Først importeres nødvendige pakker for numeriske beregninger og grafisk fremstilling: \texttt{NumPy} for numerikk,
+\texttt{matplotlib.pyplot} for plotting og \texttt{matplotlib.animation} for animasjon (jf.\ forrige seksjon).
+Deretter settes konfigurasjonsparametere som definerer strengens fysiske egenskaper og parametere for den numeriske 
+løsningen. Dette inkluderer lengden $L$, bølgehastigheten $c$ og simulert varighet $s$. Videre defineres antall
+punkter $N$ til å dele opp strengen. Dette påvirker nøyaktigheten: flere punkter gir bedre oppløsning, men øker
+beregningstid og minnebruk. Antall moduser bestemmer detaljgraden i startformen, der høyere verdi gir skarpere kanter og
+mer høyfrekvent innhold. 
 
-Videre setter vi opp betingelser for den grafiske fremstillingen, slik som FPS (frames per second) for animasjonen, og
-tykkelsen for linjen på grafen. For å sette startformen på grafen setter vi 
-
+Videre settes grafiske parametere, som \texttt{fps} (frames per second) for animasjonen og linjetykkelse. Startformen 
+settes med
 \begin{lstlisting}
   initial_shape_type = "pluck"
   pluck_width: float = 0.15
 \end{lstlisting}
+der \verb|"pluck"| angir en plukk (trekant-/teltform), og \verb|pluck_width| definerer bredden på området som plukkes.
 
-hvor \verb|"pluck"| indikerer at grafen (i dette tilfellet en streng) skal strekkes, og \verb|pluck_width| definerer hvor bredt området som strekkes er.
-
-\subsubsection{Initialbetingelser funksjonen}
-Hensikten med denne funksjonen er å definere startformen til strengen ved $t=0$, som vil si at funksjonen returnerer $u(x,0)$.
-Funksjonen tar inn en parameter \verb|x|, som er en numpy array med posisjoner langs strengen. Avhengig av verdien til
-\verb|initial_shape_type|, vil funksjonen returnere forskjellige startformer. I dette tilfellet er det \verb|"pluck"| 
-som er implementert som vil gi funksjonen en trekant-/teltformet startform, hvor plukkposisjonen bestemmes av følgende 
-kode:
-
+\subsubsection{Initialbetingelser-funksjonen}
+Hensikten er å definere startformen ved $t=0$, altså å returnere $u(x,0)$.
+Funksjonen tar inn en $\verb|x|$-array (posisjoner langs strengen). Avhengig av \verb|initial_shape_type|
+returneres ulike startformer. I vårt tilfelle gir \verb|"pluck"| en trekantformet profil, der plukkposisjon og bredde styrer formen:
 \begin{lstlisting}
   if initial_shape_type == "pluck":
     center = pluck_position * length_m
@@ -346,8 +352,7 @@ kode:
     return np.clip(1.0 - np.abs(x - center) / width, 0.0, 1.0)
 \end{lstlisting}
 
-hvis du setter inn for verdi i vi har satt i starten av koden, vil dette si at strengen blir plukket slik som 
-illustrert i figuren nedenfor:
+Med verdiene satt i starten av koden får vi figuren under:
 
 \begin{figure}[H]
     \centering
@@ -371,30 +376,24 @@ illustrert i figuren nedenfor:
 
         \end{axis}
     \end{tikzpicture}
-    \caption{Startform av strengen ved $t=0$ når den blir plukket ved $x=0.3$ m.}
+    \caption{Startform ved $t=0$ når strengen plukkes ved $x=0.3$ m.}
 \end{figure}
 
-her ser vi at strenger blir plukket i en trekantformet bølge med høyde $y=1.0m$, og bredde på $0.15$ m. Dette er
-ikke nøyaktig slik en streng ville sett ut hvis den ble plukket, men det gir en god tilnærming som er enkel å 
-implementere i en numerisk modell.
+Her ser vi at strengen plukkes i en trekantformet bølge med høyde $y=1.0\,\text{m}$ og bredde $0.15\,\text{m}$.
+Dette er ikke en nøyaktig kopi av en fysisk plukk, men en hensiktsmessig tilnærming som er enkel å implementere.
 
-Videre i koden setter vi startfarten til strengen ved $t=0$, som i dette tilfellet er null over hele strengen. Funksjonen som returneres vil 
-derfor se slik ut: $g(x)=u_t(x,0)$ og vil returneres for alle verdier av $x$ som er gitt som input til funksjonen. Siden starthastigheten er satt
-til $0$, vil \verb|return np.zeros_like(x)| returnere en array med samme form som \verb|x|, men med alle verdier satt til null.
+Startfarten settes til null over hele strengen ved $t=0$. Funksjonen $g(x)=u_t(x,0)$ returnerer derfor
+\verb|np.zeros_like(x)| (en array med samme form som \verb|x|, men med bare nuller).
 
 \subsubsection{Oppsett av romlige og tidsmessige akser}
-Først linje i denne kodebiten (\verb|np.ndarray x|)setter opp et array av jevnt fordelte punkter mellom $0$ og lengden $L$. Disse punktene vil da representere
-posisjonene langs strengen hvor vi beregner $u(x,t)$. Eksempelvis hvis \verb|num_points=5| og \verb|length_m=1.0|, vil arrayet til \verb|x| se slik ut: \verb|x = [0, 0.25, 0.5, 0.75, 1.0]|.
-Videre definerer vi \verb|float dt|, for å bergne avstand til naboer. Denne delen av koden er ikke i bruk, men lagt inn for fremtidsformål. Neste 
-linje i koden (\verb|float dt|) definerer tidssteg til et bilde per sekund i animasjonen, hvor for \verb|fps=60| vil evaluere tilstanden hvert
-$\frac{1}{60} \approx 16.7$ millisekund. Videre er beregning av antall tidssteg (\verb|num_steps = int(duration_s * fps) + 1|). Her vil varigheten
-av simulasjonen og antall \verb|fps| bestemme hvor mange tidssteg som er i animasjonen slik at simuleringen var like lenge som animasjonen. Til
-slutt har vi tiden \verb|np.ndarray t| som blir et array over alle tider hvor strengen skal beregnes.
+Første linje (\verb|np.ndarray x|) oppretter et jevnt fordelt rutenett fra $0$ til lengden $L$. Punktene representerer
+posisjoner der $u(x,t)$ evalueres. Som eksempel: med \verb|num_points=5| og \verb|length_m=1.0| blir \verb|x = [0, 0.25, 0.5, 0.75, 1.0]|.
+Variabelen \verb|dx| beregnes for informasjon (ikke brukt videre). Deretter settes tidssteget \verb|dt| til $\tfrac{1}{\texttt{fps}}$,
+slik at for \verb|fps=60| oppdateres tilstanden hver $\approx 16{,}7$ ms. Antall tidssteg settes med
+\verb|num_steps = int(duration_s * fps) + 1|, og \verb|t| blir arrayen med alle tidspunkter der strengen evalueres.
 
 \subsubsection{Metodefunksjonen}
-I denne funksjonen settes simuleringen i gang. Grafen begynner å bevege seg som følge av de initialbetingelsene som ble definert tidligere. 
-Bevegelsen oppstår gjennom stegvise beregninger av strengens utslag over tid. I denne funksjonen settes de ulike komponentene i ligningen
-under:
+Denne funksjonen starter selve simuleringen. Bevegelsen oppstår fra de definerte initialbetingelsene og beregnes trinnvis over tid:
 
 \begin{equation*}
   u(x,t) = \sum_{n=1}^{N} 
@@ -402,20 +401,18 @@ under:
   \sin\!\left(\frac{n\pi x}{L}\right)
 \end{equation*}
 
-Det første vi gjør er å hente startform \verb|f| og starthastighet \verb|g| ved å bruke initialbetingelser-funksjonene vi har definert tidligere. Videre lager vi en kolonnevektor med
-modusindekser. Så bygger vi alle basisfunksjonene $\sin(\frac{n \pi x}{L})$ for alle $n$ og $x$ verdier. Resultatet av dette blir en matrise med $N (moduser) \cdot Nx (rompunkter)$. Videre
-setter vi egenfrekvensener $\omega_n = c \frac{n \pi}{L}$ for en streng med faste ender.
-
-Neste bit med kode regner ut fourier-koeffisientene fra f og g. Her tar vi i bruk formlene:
+Først hentes startform \verb|f| og starthastighet \verb|g| fra funksjonene over. Deretter konstrueres en kolonnevektor med
+modusindekser, og basisfunksjonene $\sin\!\left(\frac{n \pi x}{L}\right)$ for alle $n$. Resultatet er en matrise med
+$N$ (moduser) $\times$ $N_x$ (rompunkter). Egenfrekvensene settes til $\omega_n = c \frac{n \pi}{L}$ for en streng med faste ender.
+Fourier-koeffisientene beregnes fra $f$ og $g$ ved
 
 \begin{align*}
   B_n &= \frac{2}{L} \int_{0}^{L} f(x)\,\sin\!\left(\frac{n\pi x}{L}\right)\,dx \\
   B_n^{*} &= \frac{2}{L\,\omega_n} \int_{0}^{L} g(x)\,\sin\!\left(\frac{n\pi x}{L}\right)\,dx
 \end{align*}
 
-Neste kodebit allokerer en matrise for alle tidssteg, hvor tiden er i radene og rompunktene $x$ er i kolonnene. Deretter bergner vi de tidsavhengige koeffisientene for hvert tidspunkt $t_k$.
-Her utrfører \verb|coeff_t @ sin_basis| summen $\sum_n a_n(t_k) \sin(\frac{n \pi x}{L})$ som gir $u(x, t_k)$ for alle $x$. Koden vil da bli seende slik ut:
-
+Deretter allokeres en matrise for alle tidssteg (rader: tid, kolonner: rompunkter $x$). For hvert $t_k$ beregnes de tidsavhengige
+koeffisientene, og $\sum_n a_n(t_k) \sin\!\left(\frac{n \pi x}{L}\right)$ utføres vektoriserte med \verb|coeff_t @ sin_basis|:
 \begin{lstlisting}
   frames = np.zeros((num_steps, num_points))
   for k, tk in enumerate(t):
@@ -423,16 +420,14 @@ Her utrfører \verb|coeff_t @ sin_basis| summen $\sum_n a_n(t_k) \sin(\frac{n \p
       frames[k, :] = coeff_t @ sin_basis
 \end{lstlisting}
 
-Etter dette tvinger vi randbetingelser $u(0, t) = u(L, t) = 0$ numerisk for å sikre robusthet, siden vi bruker \verb|np.trapz|-funksjonen som gir en tilnærmet verdi og \verb|num_modes=60| og
-ikke går $\rightarrow \infty$. Så returnerer vi hele tidsutviklingen $u(x, t_k)$
+Til slutt håndheves randbetingelsene $u(0, t) = u(L, t) = 0$ numerisk for robusthet (siden \verb|np.trapz|
+gir en tilnærming og \verb|num_modes=60| ikke er $\to\infty$). Funksjonen returnerer hele tidsutviklingen $u(x, t_k)$.
 
 \subsubsection{Animasjonsfunksjonen}
-Her starter vi med å ta inn alle simulerte rammer, som er 2D-array med form \\ 
-\verb|(num_steps, num_points)|, i tillegg til en tittel. Så oppretter vi figur og akse
-før vi tegner første tidsramme som en linje og lagrer den i en variabel, som oppdateres for hver frame av animasjonen. Så setter vi x-aksen til strengens lengde, setter 
-y-aksen ut i fra høyeste og laveste y-verdi for alle tider med litt ekstra padding lagt inn. Videre setter vi aksenavn, tittel, og tidsetikett som oppdateres underveis.
-Så tegner vi selve startbildet med \verb|init()|-funksjonen, før vi oppdaterer funksjonen over tid med \verb|update(i)|-funksjonen. Til slutt bruker vi en innebygd funksjon
-fra matplotlib.animation biblioteket som håndterer animasjonen videre, og ser slik ut:
+Funksjonen tar inn alle simulerte rammer (2D-array \verb|(num_steps, num_points)|) samt en tittel. Det opprettes figur og akse,
+før første tidsramme tegnes. X-aksen settes til strengens lengde, y-aksen dimensjoneres fra min./maks.\ verdi med litt
+padding. Aksenavn, tittel og en tidslabel oppdateres fortløpende via \verb|update(i)|, mens \verb|init()| tegner startbildet.
+Selve animasjonen settes opp med:
 
 \begin{lstlisting}
   anim = FuncAnimation(
@@ -445,5 +440,4 @@ fra matplotlib.animation biblioteket som håndterer animasjonen videre, og ser s
     )
 \end{lstlisting}
 
-Her legger vi egentlig bare inn funksjonene sammen med noen paramtere for avspilling av animasjonen. Resten av koden er bare lagring av animasjonen lokalt og stillbilde 
-for $t=0$.
+Avslutningsvis lagres animasjonen lokalt, samt et stillbilde for $t=0$.

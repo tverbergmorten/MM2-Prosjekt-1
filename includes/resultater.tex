@@ -1,9 +1,9 @@
 \subsection{Parametervariasjon}
-\subsubsection{Endring i spennkraft}
+\subsubsection{Endring i spennkraft, og massetetthet}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{figurer/MapleSimulering0sog1s.png}
+	\includegraphics[width=0.6\textwidth]{figurer/MapleSimulering0sog1s.png}
 	\caption{Gitarstrenger ved t=0s og t=1s}
 	\label{fig:mapleSim0sog1s}
 \end{figure}
@@ -13,29 +13,28 @@ strengene starter med samme initialfunksjon $f(x)$, det eneste som er ulikt mell
 og massetetthet. Ettersom at det ikke var mulig å legge til navn for de ulike grafene, er det vanskelig å
 skille mellom de ulike strengtykkelsene og strengspenningene. 
 
-Her er en liste over de ulike strengtykkelsene, massetethetene og $c$-verdiene:
-
-\begin{center}
-	\begin{tabular}{|c|c|c|c|}
-		 Streng	&	strengtykkelse	&	massetetthet, $\rho$	& $c$-verdienre \\  
-	\end{tabular}
-\end{center}
-
-\subsubsection{Endring i massetetthet}
-\dots
-
 \subsection{Numeriske resultater}
 \subsubsection{Resultatgjennomgang}
 For å se animasjonsresultatene av den numeriske løsningen kan du besøke denne kilden: \parencite{simuleringVideo}.
 
-\includegraphics[width=\textwidth]{figurer/bolgeligning_t0.png}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figurer/bolgeligning_t0.png}
+	\caption{Bølgelikningen ved $t=0s$}
+	\label{fig:BolgelikningVedT0}
+\end{figure}
 
 Her ser vi animasjonen for den numeriske løsningen ved t=0 som er lik initialformen som blir satt. Dette er fordi initialfarten er satt til $0$.
 Slik som nevnt tidligere vil dette da være et trekantformet "plukk" som  har bredde $0.3m$, som starter i $x=0.15$ og ender i $x=0.45$. Vi 
 vet også fra koden at vi har satt $N=60$, dette er en høy nok verdi til at løsningen nærmer seg konvergering for Fourierserien og nær den trekantformen som vi har satt i 
 initialbetingelsene. Hvis $N$ hadde vært lavere, eksempelvis hvis $N=5$, så ville bølgen sett slik ut:
 
-\includegraphics[width=\textwidth]{figurer/bolgeligning_t0_n5.png}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.6\textwidth]{figurer/bolgeligning_t0_n5.png}
+	\caption{Bølgelikningen ved $t=0s$ og $N=5$}
+	\label{fig:BolgelikningVedT0OgN5}
+\end{figure}
 
 Ved lavere verdier av $N$ (som vist i figuren over) klarer ikke Fourierserien å gjengi knekkpunktet i plukkformen nøyaktig. Dette fører til 
 små oversving og bølger rundt toppunktet, kjent som Gibbs-fenomenet. For å unngå dette er $N=60$ valgt, som gir en tilstrekkelig god tilnærming.
@@ -55,7 +54,7 @@ Den ideelle funksjonen ser slik ut:
 \end{equation*}
 
 hvor $p=0.3$. Funksjonen er da kontinuerlig men ikke deriverbar i toppunktet. 
-
+\clearpage
 Et viktig punkt å kontrollere i simuleringen er at randbetingelsene overholdes. 
 Vi ser fra både figuren og animasjonen at utslaget ved strengens endepunkter forblir null gjennom hele simuleringen, altså $u(0,t)=u(L,t)=0$. 
 Dette bekrefter at den numeriske metoden håndterer de faste endene korrekt, slik at ingen uønsket bevegelse oppstår ved grensepunktene. 
@@ -81,5 +80,25 @@ Høyere moduser oscillerer med perioder $T_n = T_1/n$, og bidrar til den komplek
 
 
 \subsubsection{Sammenligning av analytisk og numerisk løsning}
-\dots
+
+Ved analytisk utledning av krefter på et strengstykke kommer bølgelikningen frem:
+
+\begin{equation*}
+	u_{tt} = c^2u_{xx}, \qquad c^2 = \frac{T}{\rho}
+\end{equation*}
+\clearpage
+Likningen beskriver en ideell streng med faste ender, og ved seperasjon av variabler og bruk av 
+randbetingelser, blir løsningen en fourier-rekke:
+
+\begin{equation*}
+	u(x,t) = \sum_{n=1}^{\infty} c_n \sin \frac{n \pi x}{l} \cos \frac{n \pi c t}{l}
+\end{equation*}
+
+Der $c_n$ beskriver initalbetingelsene til strengen, $u(x,0) = f(x)$. Denne Løsningen
+gjelder under antakelse om lineær, homogen og tapsfri streng. 
+
+Den numeriske løsningen implementeres ved å summere ett endelig antall ledd i fourier-rekken,
+her $N=60$. Den numeriske løsningen viser god overensstemmelse med den analytiske, spesielt
+for moderate verdier av $N$. Da samsvarer hovedform og periodisiteten. Begge løsningene viser
+at bølgen reflekteres ved endepunktene, og at bølgen returnerer til startformen. 
 

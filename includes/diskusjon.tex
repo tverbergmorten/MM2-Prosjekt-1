@@ -5,19 +5,16 @@ I dette arbeidet er bølgelikningen for en streng utledet både teoretisk og imp
 \begin{equation*}
 \frac{\partial^2 u}{\partial t^2} = \frac{T}{\rho} \frac{\partial^2 u}{\partial x^2}
 \end{equation*}
-
 Her er \( T \) spenningen i strengen, \( \rho \) massetettheten, og \( u(x, t) \) beskriver utslaget til strengen. Bølgehastigheten defineres som
 
 \begin{equation*}
 c^2 = \frac{T}{\rho}
 \end{equation*}
-
 Den teoretiske løsningen gjøres ved separasjon av variable, hvor løsningen antas å være et produkt av en romlig funksjon \( F(x) \) og en tidsavhengig funksjon \( G(t) \). Dette fører til to separate differensiallikninger, som løses med sinus- og cosinus-funksjoner. Ved å bruke grensebetingelser for en streng som er fast i begge ender, finner man en løsning som uttrykkes som en uendelig sum (Fourier-rekke) av normalmoduser:
 
 \begin{equation*}
 u(x, t) = \sum_{n=1}^{\infty} c_n \sin\left(\frac{n\pi x}{l}\right)\cos\left(\frac{n\pi c t}{l}\right)
 \end{equation*}
-
 Den numeriske løsningen er implementert i Python, hvor bibliotekene \texttt{NumPy} og \texttt{Matplotlib} benyttes til henholdsvis beregninger og visualisering. Startformen til strengen ved \( t = 0 \) defineres som en trekantform (\textit{pluck}), som er en forenklet, men effektiv modell av hvordan en streng kan plukkes i praksis. Videre brukes \texttt{Matplotlib.animation} for å vise hvordan strengen beveger seg over tid.
 
 Til slutt beregnes de teoretiske egenfrekvensene for strengen. Når strengen er festet i begge ender, kan den kun vibrere i bestemte mønstre, kalt normalmoduser. Grunnmodusen har bølgelengde
@@ -25,26 +22,46 @@ Til slutt beregnes de teoretiske egenfrekvensene for strengen. Når strengen er 
 \begin{equation*}
 \lambda_1 = 2L
 \end{equation*}
-
 og tilhørende frekvens er gitt av Mersenne's formel:
 
 \begin{equation*}
 f_1 = \frac{1}{2L} \sqrt{\frac{T}{\mu}}
 \end{equation*}
-
 Høyere moduser har frekvenser som er heltallsmultipler av grunnmodusen:
 
 \begin{equation*}
 f_n = n f_1 = \frac{n}{2L} \sqrt{\frac{T}{\mu}}, \quad n = 1, 2, 3, \dots
 \end{equation*}
-
-
-
-
 \subsubsection{Styrker og svakheter i modellen}
-\dots
+Modellen som er brukt i dette arbeidet har flere tydelige styrker, men også noen svakheter. Det er 
+oppgaven til dette kapittelet å forstå de ulike styrkene og svakhetene, og hvordan disse påvirker 
+resultatet.
 
+En av modellens største styrker er at den bygger på de fundamentale prinsippene i bølgelikningen for
+et ideelt system. Et ideelt system innebærer at man ser bort fra faktorer som demping, stivhet i strengen
+og ikke-lineære effekter. Dette gjør det mulig å fokusere på de grunnleggende egenskapene ved 
+bølgebevegelsen, og gir en klar forståelse av hvordan strengen oppfører seg under ideelle forhold. 
+Den numeriske implementasjonen er også en styrke, da den gir en visuell representasjon av 
+bølgebevegelsen som kan være lettere å forstå enn rene matematiske uttrykk.
 
+Samtidig har modellen enkelte svakheter som må tas i betraktning. For det første tar den ikke hensyn
+til at energien ikke er bevart i et reelt system. I praksis vil en streng miste energi over tid på grunn av
+demping og friksjon, noe som ikke er inkludert i denne modellen. Dette fører til at de numeriske resultatene kan avvike
+fra virkelige observasjoner over lengre tid. En annen svakhet er at modellen antar en perfekt trekantformet startbetingelse,
+som ikke nødvendigvis representerer hvordan en streng faktisk plukkes i praksis. Dette kan påvirke de initielle 
+vibrasjonsmønstrene og dermed resultatene. Det er også verdt å merke seg at modellen forutsetter at strengen er homogen 
+og fullstendig elastisk, noe som ikke alltid gjelder for virkelige materialer. Variasjoner i tetthet eller spenning kan føre til komplekse 
+bølgefenomener som ikke fanges opp av denne forenklede modellen.
+
+Et annet forhold er at den numeriske metoden kun benytter 60 moduser ($N=60$) i Fourier-rekken for å tilnærme 
+løsningen. Selv om dette er tilstrekkelig for å fange opp hovedtrekkene i bølgebevegelsen, kan det 
+føre til at finere detaljer og høyere frekvenskomponenter ikke blir representert nøyaktig. Dette kan være spesielt merkbart
+dersom strengen plukkes på en måte som introduserer høyfrekvente vibrasjoner.
+
+Samlet sett gir modellen en god balanse mellom kompleksitet og forståelse. Den er godt egnet til å illustrere
+hvordan spenning, massetetthet og lengde påvirker bølgebevegelsen, men det er viktig å være bevisst på dens
+begrensninger. For mer realistiske simuleringer av fysiske systemer vil det være nødvendig å inkludere faktorer
+som demping, materialvariasjoner og mer realistiske startbetingelser.
 
 \subsubsection{Effekt av parametervariasjon}
 
@@ -67,7 +84,7 @@ og de høyere normalmodusene følger som heltallsmultipler av denne:
 \begin{equation*}
 f_n = \frac{n}{2L} \sqrt{\frac{T}{\mu}}, \quad n=1,2,3,\ldots
 \end{equation*}
-
+\clearpage
 Fra disse uttrykkene kan man se at økning i spenning \( T \) fører til høyere frekvenser, noe som tilsvarer en lysere tone når strengen vibrerer. Økt massetetthet \( \mu \) gir lavere frekvenser og dermed en dypere tone. Lengden på strengen \( L \) er også avgjørende. En lengre streng har lavere frekvenser, fordi bølgelengdene øker og dermed tonehøyden synker.
 
 I den numeriske simuleringen reflekteres disse effektene tydelig. Ved å øke \( T \) ser man at strengen svinger raskere i animasjonen, mens økt \( \mu \) eller \( L \) resulterer i tregere bevegelser og lavere frekvenser.
